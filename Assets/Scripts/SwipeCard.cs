@@ -44,7 +44,14 @@ public class SwipeCard : MonoBehaviour {
 
 
 			Vector3 newPos = CalculatePosition (currentCard.transform.position, diffInWorld);
-			Vector3 cardRotation = calculateRotation(diff);
+
+
+			Vector3 cardRotation = Vector3.zero;
+
+			if (!IsCardXLimit (newPos)) 
+			{
+				cardRotation = calculateRotation (diff);
+			}
 
 			currentCard.transform.position = newPos;
 			currentCard.transform.Rotate (cardRotation);
@@ -56,11 +63,41 @@ public class SwipeCard : MonoBehaviour {
 		}
 	}
 
+	private bool IsCardXLimit(Vector3 newPos) 
+	{
+		return newPos.x == 3.5f || newPos.x == -3.5f;
+	}
+
 	private Vector3 CalculatePosition(Vector3 currentPosition, Vector3 diffInWorld)
 	{
 		Vector3 newPos = new Vector3 ();
-		newPos.x = currentPosition.x + diffInWorld.x;
-		newPos.y = currentPosition.y + diffInWorld.y;
+		float newX = currentPosition.x + diffInWorld.x;
+
+		if (newX > 3.5f) 
+		{
+			newX = 3.5f;
+		}
+
+		if (newX < -3.5f) 
+		{
+			newX = -3.5f;
+		}
+
+		newPos.x = newX;
+
+
+		float newY = currentPosition.y + diffInWorld.y;
+		if (newY > 1.0f) 
+		{
+			newY = 1.0f;
+		}
+
+		if (newY < -1.5f) 
+		{
+			newY = -1.5f;
+		}
+
+		newPos.y = newY;
 		newPos.z = 0;
 
 		return newPos;
