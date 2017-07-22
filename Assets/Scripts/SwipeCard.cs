@@ -27,6 +27,11 @@ public class SwipeCard : MonoBehaviour {
 	void Update () 
 	{
 		buttonDown = IsButtonDown();
+		MoveCard (buttonDown);
+
+	}
+
+	private void MoveCard(bool buttonDown) {
 		if (buttonDown) {
 			Vector3 currentPos = Input.mousePosition;
 			Vector3 diff = currentPos - startMousePos;
@@ -38,20 +43,11 @@ public class SwipeCard : MonoBehaviour {
 			Debug.Log ("down "+diff);
 
 
-			Vector3 newPos = new Vector3 ();
-			newPos.x = currentCard.transform.position.x + diffInWorld.x;
-			newPos.y = currentCard.transform.position.y + diffInWorld.y;
-			newPos.z = 0;
-
-			float cardRotation = calculateRotation(diff);
-			Vector3 newRotation = new Vector3 ();
-			newRotation.z = cardRotation;
-			newRotation.x = 0;
-			newRotation.y = 0;
-
+			Vector3 newPos = CalculatePosition (currentCard.transform.position, diffInWorld);
+			Vector3 cardRotation = calculateRotation(diff);
 
 			currentCard.transform.position = newPos;
-			currentCard.transform.Rotate (newRotation);
+			currentCard.transform.Rotate (cardRotation);
 
 			startMousePos = currentPos;
 
@@ -60,7 +56,22 @@ public class SwipeCard : MonoBehaviour {
 		}
 	}
 
-	private float calculateRotation(Vector3 diff) {
-		return (diff.x * -90.0f) / Screen.width;
+	private Vector3 CalculatePosition(Vector3 currentPosition, Vector3 diffInWorld)
+	{
+		Vector3 newPos = new Vector3 ();
+		newPos.x = currentPosition.x + diffInWorld.x;
+		newPos.y = currentPosition.y + diffInWorld.y;
+		newPos.z = 0;
+
+		return newPos;
+	}
+
+	private Vector3 calculateRotation(Vector3 diff) {
+		float cardRotation = (diff.x * -90.0f) / Screen.width;
+		Vector3 newRotation = new Vector3 ();
+		newRotation.z = cardRotation;
+		newRotation.x = 0;
+		newRotation.y = 0;
+		return newRotation;
 	}
 }
