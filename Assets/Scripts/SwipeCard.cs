@@ -6,42 +6,30 @@ public class SwipeCard : MonoBehaviour {
 
 	public GameObject currentCard;
 
-	private bool buttonDown = false;
-	private Vector3 startMousePos;
-	private Vector3 startPos;
-
-	private bool IsButtonDown() 
-	{
-		if (!buttonDown && Input.GetMouseButtonDown (0)) {
-			return true;
-		}
-		else if (buttonDown && Input.GetMouseButtonUp(0))
-		{
-			return false;
-		}
-
-		return buttonDown;
-	}
+	#if UNITY_ANDROID || UNITY_IOS
+	private CalculateDelta CalculateDelta = new CalculateDeltaTouch();
+	#else
+	private CalculateDelta CalculateDelta = new CalculateDeltaMouse();
+	#endif
 
 
 	void Update () 
 	{
-		buttonDown = IsButtonDown();
-		MoveCard (buttonDown);
-
+		if (CalculateDelta.IsMoving ()) {
+			MoveCard ();
+		}
 	}
 
-	private void MoveCard(bool buttonDown) {
-		if (buttonDown) {
-			Vector3 currentPos = Input.mousePosition;
-			Vector3 diff = currentPos - startMousePos;
+	private void MoveCard() {
+		if (CalculateDelta.IsMoving()) {
 
-			Vector3 currentPosInWorld = Camera.main.ScreenToWorldPoint(currentPos);
-			Vector3 startMouseInWorld = Camera.main.ScreenToWorldPoint(startMousePos);
-			Vector3 diffInWorld = currentPosInWorld - startMouseInWorld;
+			CalculateDelta.Update ();
+
+			Vector3 diff = CalculateDelta.CalculateDiffInPx (); 
+
+			Vector3 diffInWorld = CalculateDelta.CalculateDiffInWorld();
 
 			Debug.Log ("down "+diff);
-
 
 			Vector3 newPos = CalculatePosition (currentCard.transform.position, diffInWorld);
 
@@ -56,11 +44,7 @@ public class SwipeCard : MonoBehaviour {
 			currentCard.transform.position = newPos;
 			currentCard.transform.Rotate (cardRotation);
 
-			startMousePos = currentPos;
-
-		} else {
-			startMousePos = Input.mousePosition;
-		}
+		} 
 	}
 
 	private bool IsCardXLimit(Vector3 newPos) 
