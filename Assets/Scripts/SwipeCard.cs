@@ -29,7 +29,7 @@ public class SwipeCard : MonoBehaviour {
 
 			Vector3 diffInWorld = CalculateDelta.CalculateDiffInWorld();
 
-			Debug.Log ("down "+diff);
+			Debug.Log ("moving: " +diff.x + " " + diffInWorld.x );
 
 			Vector3 newPos = CalculatePosition (currentCard.transform.position, diffInWorld);
 
