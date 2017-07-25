@@ -48,7 +48,7 @@ class CalculateDeltaTouch : CalculateDelta
 			if (!isMoving && Input.GetTouch (0).phase == TouchPhase.Moved) {
 				lastPosition = Input.GetTouch (0).position;
 				isMoving = true;
-			} else if (isMoving && Input.GetTouch (0).phase != TouchPhase.Moved){
+			} else if (isMoving && Input.GetTouch (0).phase == TouchPhase.Ended){
 				isMoving = false;
 			}
 		}
