@@ -39,20 +39,31 @@ public class SwipeCard : MonoBehaviour
                 Debug.Log("restoring");
                 if (_pendingAnimation)
                 {
+                    _pendingAnimation = false;
+                    _animationInProgress = true;
                     if (CheckRestoreToPosition())
                     {
-                        _pendingAnimation = false;
-                        _animationInProgress = true;
                         StartCoroutine(SmoothMovement(new Vector3(0, _yInitialPosition, 0),
-                            new Quaternion(0, 0, 0, 0)));
+                            new Quaternion(0, 0, 0, 0), 1.0f));
                     }
                     else
                     {
+                        if (CurrentCard.transform.position.x > 0)
+                        {
+                            StartCoroutine(SmoothMovement(new Vector3(6.0f, -6.0f, 0),
+                                new Quaternion(0, 0, -90f, 0), 2.5f));
+                        }
+                        else
+                        {
+                            StartCoroutine(SmoothMovement(new Vector3(-6.0f, -6.0f, 0),
+                                new Quaternion(0, 0, 90f, 0), 2.5f));
+                        }
                     }
                 }
             }
         }
     }
+
 
     private void MoveCard()
     {
@@ -133,27 +144,32 @@ public class SwipeCard : MonoBehaviour
         return CurrentCard.transform.position.x > -0.5f && CurrentCard.transform.position.x < 0.5f;
     }
 
-    protected IEnumerator SmoothMovement(Vector3 end, Quaternion endRotation)
+    protected IEnumerator SmoothMovement(Vector3 end, Quaternion endRotation, float accel)
     {
         float sqrRemainingDistance = (CurrentCard.transform.position - end).sqrMagnitude;
 
-        float deltaToRotateZ = CurrentCard.transform.rotation.z / MoveTime;
-        Vector3 deltaToRotate = new Vector3(0, 0, -deltaToRotateZ);
+        float offsetZ = endRotation.z - CurrentCard.transform.rotation.z;
+        float deltaToRotateZ = offsetZ / _inverseMoveTime;
+        Vector3 deltaToRotate = new Vector3(0, 0, offsetZ);
 
         while (sqrRemainingDistance > float.Epsilon)
         {
             Vector3 newPostion =
-                Vector3.MoveTowards(CurrentCard.transform.position, end, _inverseMoveTime * Time.deltaTime);
+                Vector3.MoveTowards(CurrentCard.transform.position, end, _inverseMoveTime * Time.deltaTime * accel);
 
             CurrentCard.transform.position = newPostion;
-            CurrentCard.transform.Rotate(deltaToRotate);
+            CurrentCard.transform.Rotate(deltaToRotate * Time.deltaTime * accel);
 
             sqrRemainingDistance = (CurrentCard.transform.position - end).sqrMagnitude;
 
             yield return null;
         }
 
-        CurrentCard.transform.rotation = endRotation;
+        Debug.Log("delta=" + endRotation);
+        //CurrentCard.transform.rotation = endRotation;
+        CurrentCard.transform.position = new Vector3(0, _yInitialPosition, 0f);
+        CurrentCard.transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
+        Debug.Log("delta=" + CurrentCard.transform.rotation);
         _animationInProgress = false;
         Debug.Log("finish");
     }
