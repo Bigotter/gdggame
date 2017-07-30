@@ -33,3 +33,6 @@ sysinfo.txt
 *.apk
 *.unitypackage
 .idea/.idea.gdgGame/.idea
+.idea
+JetBrains.meta
+Assets/Plugins/Editor/JetBrains

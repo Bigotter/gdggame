@@ -59,7 +59,7 @@ public class SwipeCard : MonoBehaviour {
 
 		if (!IsCardXLimit (newPos)) 
 		{
-			cardRotation = calculateRotation (diff);
+			cardRotation = CalculateRotation (diff);
 		}
 
 		currentCard.transform.position = newPos;
@@ -106,7 +106,7 @@ public class SwipeCard : MonoBehaviour {
 		return newPos;
 	}
 
-	private Vector3 calculateRotation(Vector3 diff) {
+	private Vector3 CalculateRotation(Vector3 diff) {
 		float cardRotation = (diff.x * -90.0f) / Screen.width;
 		Vector3 newRotation = new Vector3 ();
 		newRotation.z = cardRotation;
