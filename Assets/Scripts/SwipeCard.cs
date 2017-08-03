@@ -1,28 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using core;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class SwipeCard : MonoBehaviour
 {
     public GameObject CurrentCard;
     public float MoveTime = 0.5f;
 
+#if UNITY_ANDROID || UNITY_IOS
+    private CalculateDelta CalculateDelta = new CalculateDeltaTouch();
+#else
+    private CalculateDelta CalculateDelta = new CalculateDeltaMouse();
+#endif
+
     private bool _animationInProgress;
     private float _inverseMoveTime;
     bool _pendingAnimation;
     private float _yInitialPosition;
+    private CardProvider _cardProvider;
 
-#if UNITY_ANDROID || UNITY_IOS
-	private CalculateDelta CalculateDelta = new CalculateDeltaTouch();
-	#else
-    private CalculateDelta CalculateDelta = new CalculateDeltaMouse();
-#endif
+    private Animation currentAnimation = Animation.None;
 
+    enum Animation
+    {
+        None,
+        Restore,
+        SwipeRight,
+        SwipeLeft
+    };
 
     protected virtual void Start()
     {
+        _cardProvider = CardProvider.Instance();
         _inverseMoveTime = 1f / MoveTime;
         _yInitialPosition = CurrentCard.transform.position.y;
+        NextCard(CurrentCard);
+    }
+
+    private void NextCard(GameObject currentCard)
+    {
+        var nextCard = _cardProvider.NextCard();
+
+        var guy = currentCard.transform.Find("guy");
+        var spriteGuy = guy.GetComponent<SpriteRenderer>();
+        var nextImage = nextCard.Image;
+        spriteGuy.sprite = Sprite.Create(nextImage,
+            new Rect(0, 0, nextImage.width, nextImage.height),
+            new Vector2(0.5f, 0.5f));
+
+
+        var background = currentCard.transform.Find("background");
+        var spriteBackground = background.GetComponent<SpriteRenderer>();
+        spriteBackground.color = nextCard.Color;
     }
 
     void Update()
@@ -43,6 +74,7 @@ public class SwipeCard : MonoBehaviour
                     _animationInProgress = true;
                     if (CheckRestoreToPosition())
                     {
+                        currentAnimation = Animation.Restore;
                         StartCoroutine(SmoothMovement(new Vector3(0, _yInitialPosition, 0),
                             new Quaternion(0, 0, 0, 0), 1.0f));
                     }
@@ -50,11 +82,13 @@ public class SwipeCard : MonoBehaviour
                     {
                         if (CurrentCard.transform.position.x > 0)
                         {
+                            currentAnimation = Animation.SwipeRight;
                             StartCoroutine(SmoothMovement(new Vector3(6.0f, -6.0f, 0),
                                 new Quaternion(0, 0, -90f, 0), 2.5f));
                         }
                         else
                         {
+                            currentAnimation = Animation.SwipeLeft;
                             StartCoroutine(SmoothMovement(new Vector3(-6.0f, -6.0f, 0),
                                 new Quaternion(0, 0, 90f, 0), 2.5f));
                         }
@@ -165,12 +199,13 @@ public class SwipeCard : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("delta=" + endRotation);
-        //CurrentCard.transform.rotation = endRotation;
         CurrentCard.transform.position = new Vector3(0, _yInitialPosition, 0f);
         CurrentCard.transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
-        Debug.Log("delta=" + CurrentCard.transform.rotation);
+        if (currentAnimation == Animation.SwipeLeft || currentAnimation == Animation.SwipeRight)
+        {
+            NextCard(CurrentCard);
+        }
         _animationInProgress = false;
-        Debug.Log("finish");
+        currentAnimation = Animation.None;
     }
 }
