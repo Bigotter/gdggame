@@ -6,16 +6,16 @@ namespace core
     {
         private static ProcessCard _instance;
         public const int MaxHappiness = 100;
-        public const int MaxMoney = 3000;
+        public const int MaxMoney = 100;
         public const int InitHappiness = MaxHappiness;
         public const int InitMoney = 0;
         
-        private int _money = 0;
 
         public ProcessCard()
         {
         }
 
+        public int Money { get; private set; }
         public int Happiness { get; private set; }
 
         public static ProcessCard Instance()
@@ -26,7 +26,7 @@ namespace core
         public void Reset()
         {
             Happiness = InitHappiness;
-            _money = InitMoney;
+            Money = InitMoney;
         }
 
         public void ApplyCardEffect(Card currentCard)
@@ -42,7 +42,7 @@ namespace core
 
         private void ApplyMoney(int moneyModification)
         {
-            _money += moneyModification;
+            Money += moneyModification;
         }
     }
 }

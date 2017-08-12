@@ -1,22 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using core;
 using UnityEngine;
 
-public class ApplyHappiness : MonoBehaviour
+public class ApplyMoney : MonoBehaviour
 {
     readonly ApplyIconValue _applyIconValue = new ApplyIconValue();
 
     void Start()
     {
-        _applyIconValue.Init(ProcessCard.InitHappiness, ProcessCard.InitHappiness, gameObject);
+        _applyIconValue.Init(ProcessCard.InitMoney, ProcessCard.MaxMoney, gameObject);
     }
 
     void Update()
     {
         var processCard = ProcessCard.Instance();
 
-        _applyIconValue.Apply(gameObject, processCard.Happiness);
+        _applyIconValue.Apply(gameObject, processCard.Money);
     }
 }

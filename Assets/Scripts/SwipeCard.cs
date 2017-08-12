@@ -73,7 +73,6 @@ public class SwipeCard : MonoBehaviour
             }
             else
             {
-                Debug.Log("restoring");
                 if (_pendingAnimation)
                 {
                     _pendingAnimation = false;

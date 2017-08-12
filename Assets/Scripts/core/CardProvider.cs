@@ -27,7 +27,6 @@ namespace core
                 var name = "faces/" + face;
                 var textureToAdd = Resources.Load<Texture2D>(name) as Texture2D;
                 _faces.Add(textureToAdd);
-                Debug.Log(name + " " + textureToAdd);
             }
         }
 
