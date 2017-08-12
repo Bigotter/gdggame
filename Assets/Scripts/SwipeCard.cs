@@ -4,11 +4,13 @@ using System.Runtime.InteropServices;
 using core;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class SwipeCard : MonoBehaviour
 {
     public GameObject CurrentCard;
     public float MoveTime = 0.5f;
+    public Text CardDescText;
 
 #if UNITY_ANDROID || UNITY_IOS
     private CalculateDelta CalculateDelta = new CalculateDeltaTouch();
@@ -60,6 +62,8 @@ public class SwipeCard : MonoBehaviour
         var background = currentCard.transform.Find("background");
         var spriteBackground = background.GetComponent<SpriteRenderer>();
         spriteBackground.color = nextCard.Color;
+
+        CardDescText.text = nextCard.Description;
     }
 
     void Update()
