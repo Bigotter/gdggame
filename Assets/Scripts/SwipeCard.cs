@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using core;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -20,8 +21,10 @@ public class SwipeCard : MonoBehaviour
     bool _pendingAnimation;
     private float _yInitialPosition;
     private CardProvider _cardProvider;
+    private ProcessCard _porcessCard;
 
     private Animation currentAnimation = Animation.None;
+    private ProcessCard _processCard;
 
     enum Animation
     {
@@ -34,6 +37,9 @@ public class SwipeCard : MonoBehaviour
     protected virtual void Start()
     {
         _cardProvider = CardProvider.Instance();
+        _processCard = ProcessCard.Instance();
+        _processCard.Reset();
+
         _inverseMoveTime = 1f / MoveTime;
         _yInitialPosition = CurrentCard.transform.position.y;
         NextCard(CurrentCard);
@@ -203,6 +209,7 @@ public class SwipeCard : MonoBehaviour
         CurrentCard.transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
         if (currentAnimation == Animation.SwipeLeft || currentAnimation == Animation.SwipeRight)
         {
+            _processCard.ApplyCardEffect(_cardProvider.CurrentCard);
             NextCard(CurrentCard);
         }
         _animationInProgress = false;

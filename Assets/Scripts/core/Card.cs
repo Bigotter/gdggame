@@ -15,6 +15,10 @@ namespace core
             get { return _color; }
         }
 
+        public int Money { get; private set; }
+        public int Happiness { get; private set; }
+
+
         private Texture2D _image;
         private Color _color;
 
@@ -22,6 +26,8 @@ namespace core
         {
             _image = image;
             _color = color;
+            Money = 10;
+            Happiness = -5;
         }
     }
 }

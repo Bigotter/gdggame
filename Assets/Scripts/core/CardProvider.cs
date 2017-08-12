@@ -31,6 +31,8 @@ namespace core
             }
         }
 
+        public Card CurrentCard { get; set; }
+
         public static CardProvider Instance()
         {
             return _instance ?? (_instance = new CardProvider());
@@ -40,7 +42,8 @@ namespace core
         {
             var color = RandomColor();
             var image = RandomFace();
-            return new Card(image: image, color: color);
+            CurrentCard = new Card(image: image, color: color);
+            return CurrentCard;
         }
 
         private Texture2D RandomFace()
