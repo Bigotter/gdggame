@@ -65,6 +65,8 @@ public class SwipeCard : MonoBehaviour
         spriteBackground.color = nextCard.Color;
 
         CardDescText.text = nextCard.Description;
+
+		CardResponse.enabled = false;
     }
 
     void Update()
@@ -130,6 +132,8 @@ public class SwipeCard : MonoBehaviour
 		else 
 		{
 			CardResponse.enabled = true;
+			var anim = CardResponse.GetComponent<Animator>();
+			anim.Play("textAnimationMoving");
 		}
 
         CurrentCard.transform.position = newPos;
@@ -138,7 +142,7 @@ public class SwipeCard : MonoBehaviour
 
     private bool IsCardXLimit(Vector3 newPos)
     {
-        return newPos.x == 1.5f || newPos.x == -1.5f;
+        return newPos.x == 1.0f || newPos.x == -1.0f;
     }
 
     private Vector3 CalculatePosition(Vector3 currentPosition, Vector3 diffInWorld)
@@ -146,14 +150,14 @@ public class SwipeCard : MonoBehaviour
         Vector3 newPos = new Vector3();
         float newX = currentPosition.x + diffInWorld.x;
 
-        if (newX > 1.5f)
+        if (newX > 1.0f)
         {
-            newX = 1.5f;
+            newX = 1.0f;
         }
 
-        if (newX < -1.5f)
+        if (newX < -1.0f)
         {
-            newX = -1.5f;
+            newX = -1.0f;
         }
 
         newPos.x = newX;
