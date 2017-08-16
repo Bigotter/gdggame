@@ -11,6 +11,7 @@ public class SwipeCard : MonoBehaviour
     public GameObject CurrentCard;
     public float MoveTime = 0.5f;
     public Text CardDescText;
+	public Text CardResponse;
 
 #if UNITY_ANDROID || UNITY_IOS
     private CalculateDelta CalculateDelta = new CalculateDeltaTouch();
@@ -123,10 +124,13 @@ public class SwipeCard : MonoBehaviour
 
         Vector3 cardRotation = Vector3.zero;
 
-        if (!IsCardXLimit(newPos))
-        {
-            cardRotation = CalculateRotation(diff);
-        }
+		if (!IsCardXLimit (newPos)) {
+			cardRotation = CalculateRotation (diff);
+		} 
+		else 
+		{
+			CardResponse.enabled = true;
+		}
 
         CurrentCard.transform.position = newPos;
         CurrentCard.transform.Rotate(cardRotation);
