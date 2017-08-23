@@ -129,16 +129,36 @@ public class SwipeCard : MonoBehaviour
 		if (!IsCardXLimit (newPos)) {
 			cardRotation = CalculateRotation (diff);
 		} 
+
+		if (!mustShowText (newPos)) {
+			CardResponse.enabled = false;
+		} 
 		else 
 		{
-			CardResponse.enabled = true;
-			var anim = CardResponse.GetComponent<Animator>();
-			anim.Play("textAnimationMoving");
+			if (!CardResponse.enabled) {
+				CardResponse.enabled = true;
+				var animName = "";
+				if (newPos.x > 0) {
+					CardResponse.alignment = TextAnchor.UpperRight;
+					animName = "textAnimationMovingRight";
+				} else {
+					CardResponse.alignment = TextAnchor.UpperLeft;
+					animName = "textAnimationMovingLeft";
+				}
+
+				var anim = CardResponse.GetComponent<Animator> ();
+				anim.Play (animName);
+			}
 		}
 
         CurrentCard.transform.position = newPos;
         CurrentCard.transform.Rotate(cardRotation);
     }
+
+	private bool mustShowText(Vector3 newPos)
+	{
+		return newPos.x > 0.6f || newPos.x < -0.6f;
+	}
 
     private bool IsCardXLimit(Vector3 newPos)
     {
@@ -164,14 +184,14 @@ public class SwipeCard : MonoBehaviour
 
 
         float newY = currentPosition.y + diffInWorld.y;
-        if (newY > 0.5f)
+        if (newY > -1.0f)
         {
-            newY = 0.5f;
+            newY = -1.0f;
         }
 
-        if (newY < -2.0f)
+        if (newY < -1.5f)
         {
-            newY = -2.0f;
+            newY = -1.5f;
         }
 
         newPos.y = newY;
