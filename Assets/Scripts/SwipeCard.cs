@@ -29,6 +29,9 @@ public class SwipeCard : MonoBehaviour
     private Animation currentAnimation = Animation.None;
     private ProcessCard _processCard;
 
+	private string _rightText;
+	private string _leftText;
+
     enum Animation
     {
         None,
@@ -65,6 +68,8 @@ public class SwipeCard : MonoBehaviour
         spriteBackground.color = nextCard.Color;
 
         CardDescText.text = nextCard.Description;
+		_rightText = nextCard.RightText;
+		_leftText = nextCard.LeftText;
 
 		CardResponse.enabled = false;
     }
@@ -139,9 +144,11 @@ public class SwipeCard : MonoBehaviour
 				CardResponse.enabled = true;
 				var animName = "";
 				if (newPos.x > 0) {
+					CardResponse.text = _rightText;
 					CardResponse.alignment = TextAnchor.UpperRight;
 					animName = "textAnimationMovingRight";
 				} else {
+					CardResponse.text = _leftText;
 					CardResponse.alignment = TextAnchor.UpperLeft;
 					animName = "textAnimationMovingLeft";
 				}
