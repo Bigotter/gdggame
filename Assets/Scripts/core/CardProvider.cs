@@ -37,8 +37,50 @@ namespace core
 
 	    public CardProvider()
 	    {
-			var faces = new[] {"Abdon", "Alicia", "Almo", "Bad_sponsor", "Fran", "gdgMalag", "lauraMorillo", "Vero"};
-			var keys = new[] {"Abdon2.png", "Alicia.png", "Almo.png", "BadSponsor.png", "Fran.png", "Ruben.png", "Laura.png", "Vero.png"};
+			var faces = new[] {
+				"Abdon",
+				"Alicia", 
+				"Almo", 
+				"anacidre",
+				"Andreu2",
+				"Bad_sponsor", 
+				"eliezer",
+				"Fran", 
+				"gdgMalag",
+				"gema_parreno",
+				"jorge_barroso",
+				"lauraMorillo",
+				"MarioEzquerro",
+				"nieves",
+				"Paco",
+				"paola",
+				"pizza_guy",
+				"place_organizer1",
+				"Vanessa",
+				"Vero"
+			};
+			var keys = new[] {
+				"Abdon2.png", 
+				"Alicia.png", 
+				"Almo.png", 
+				"Ana.png",
+				"Andreu.png",
+				"BadSponsor.png", 
+				"Elizier.png",
+				"Fran.png",
+				"Ruben.png", 
+				"Gema.png",
+				"Rockstar.png",
+				"Laura.png",
+				"Mario Ezquerro.png",
+				"nieves.png",
+				"Paco.png",
+				"Paola.png",
+				"Pizzaguy.png",
+				"FancyPlace.png",
+				"Vanessa.png",
+				"Vero.png"
+			};
 			int pos = 0;
 	        foreach (var face in faces)
 	        {
@@ -105,6 +147,7 @@ namespace core
 			if (_faces.ContainsKey (image)) {
 				return _faces [image];
 			} else {
+				Debug.Log ("not found: " + image);
 				return _faces ["BadSponsor.png"];
 			}
 		}
