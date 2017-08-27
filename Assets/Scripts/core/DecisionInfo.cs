@@ -9,9 +9,9 @@ namespace core
 	[System.Serializable]
 	public class DecisionInfo {
 		public string text;
-		public string money;
-		public string happiness;
-		public string time;
+		public int money;
+		public int happiness;
+		public int time;
 		public string nextCard;
 		public string cardsToAdd;
 	}

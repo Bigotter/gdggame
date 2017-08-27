@@ -105,7 +105,9 @@ namespace core
 
 			var card = RandomCard ();
 			var image = chooseFace(card.image);
-			CurrentCard = new Card(image: image, color: color, description: card.text, rightText: card.right.text, leftText: card.left.text);
+			CurrentCard = new Card(image: image, color: color, description: card.text, 
+				rightText: card.right.text,rightMoney: card.right.money, rightHappiness:card.right.happiness, rightTime: card.right.time, 
+				leftText: card.left.text, leftMoney: card.left.money, leftHappiness: card.left.happiness, leftTime: card.left.time);
 	        return CurrentCard;
 	    }
 

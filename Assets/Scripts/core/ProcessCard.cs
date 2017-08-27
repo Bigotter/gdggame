@@ -29,20 +29,45 @@ namespace core
             Money = InitMoney;
         }
 
-        public void ApplyCardEffect(Card currentCard)
+		public void ApplyCardEffect(Card currentCard, bool isLeft)
         {
-            ApplyHappiness(currentCard.Happiness);
-            ApplyMoney(currentCard.Money);
+			int money = 0;
+			int happiness = 0;
+			int time = 0;
+			if (isLeft) {
+				money = currentCard.LeftMoney;
+				happiness = currentCard.LeftHappiness;
+				time = currentCard.LeftTime;
+			} else {
+				money = currentCard.RightMoney;
+				happiness = currentCard.RightHappiness;
+				time = currentCard.RightTime;
+			}
+				
+			ApplyHappiness(happiness);
+			ApplyMoney(money);
         }
 
         private void ApplyHappiness(int happinessMod)
         {
             Happiness += happinessMod;
+			if (Happiness > MaxHappiness) {
+				Happiness = MaxHappiness;
+			}
+			if (Happiness < 0) {
+				Happiness = 0;
+			}
         }
 
         private void ApplyMoney(int moneyModification)
         {
             Money += moneyModification;
+			if (Money > MaxMoney) {
+				Money = MaxMoney;
+			}
+			if (Money < 0) {
+				Money = 0;
+			}
         }
     }
 }

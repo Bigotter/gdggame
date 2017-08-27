@@ -16,25 +16,38 @@ namespace core
         }
 
 		public string RightText { get; private set; }
-		public string LeftText { get; private set; }
+		public int RightMoney { get; private set; }
+		public int RightHappiness { get; private set; }
+		public int RightTime { get; private set; }
 
-        public int Money { get; private set; }
-        public int Happiness { get; private set; }
+		public string LeftText { get; private set; }
+		public int LeftMoney { get; private set; }
+		public int LeftHappiness { get; private set; }
+		public int LeftTime { get; private set; }
+
         public string Description { get; private set; }
 
         private Texture2D _image;
         private Color _color;
         
 
-		public Card(Texture2D image, Color color, string description, string rightText, string leftText)
+		public Card(Texture2D image, Color color, string description, 
+			string rightText, int rightMoney, int rightHappiness, int rightTime,
+			string leftText, int leftMoney, int leftHappiness, int leftTime )
         {
             _image = image;
             _color = color;
-            Money = 10;
-            Happiness = -5;
             Description = description;
+
 			RightText = rightText;
+			RightMoney = rightMoney;
+			RightHappiness = rightHappiness;
+			RightTime = rightTime;
+
 			LeftText = leftText;
+			LeftMoney = leftMoney;
+			LeftHappiness = leftHappiness;
+			LeftTime = leftTime;
         }
     }
 }

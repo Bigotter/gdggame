@@ -247,7 +247,8 @@ public class SwipeCard : MonoBehaviour
         CurrentCard.transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
         if (currentAnimation == Animation.SwipeLeft || currentAnimation == Animation.SwipeRight)
         {
-            _processCard.ApplyCardEffect(_cardProvider.CurrentCard);
+			
+			_processCard.ApplyCardEffect(_cardProvider.CurrentCard, currentAnimation == Animation.SwipeLeft);	
             NextCard(CurrentCard);
         }
         _animationInProgress = false;
