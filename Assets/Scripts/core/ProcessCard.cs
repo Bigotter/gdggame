@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 namespace core
 {
@@ -9,7 +10,7 @@ namespace core
         public const int MaxMoney = 100;
 		public const int MaxTime = 28;
         public const int InitHappiness = MaxHappiness;
-		public const int InitTime = MaxTime;
+		public const int InitTime = 0;
         public const int InitMoney = 100;
         
 
@@ -30,6 +31,7 @@ namespace core
         {
             Happiness = InitHappiness;
             Money = InitMoney;
+			Time = InitTime;
         }
 
 		public void ApplyCardEffect(Card currentCard, bool isLeft)
@@ -76,7 +78,8 @@ namespace core
 
 		private void ApplyTime(int timeModification)
 		{
-			Time += timeModification;
+
+			Time += Math.Abs(timeModification);
 			if (Time > MaxMoney) {
 				Money = MaxMoney;
 			}

@@ -113,22 +113,24 @@ namespace core
 
 		void LoadCards ()
 		{
-			// Path.Combine combines strings into a file path
-			// Application.StreamingAssets points to Assets/StreamingAssets in the Editor, and the StreamingAssets folder in a build
-			string filePath = Path.Combine(Application.streamingAssetsPath, "cards.json");
+//			// Path.Combine combines strings into a file path
+//			// Application.StreamingAssets points to Assets/StreamingAssets in the Editor, and the StreamingAssets folder in a build
+//			string filePath = Path.Combine(Application.streamingAssetsPath, "cards.json");
+//
+//			if(File.Exists(filePath))
+//			{
 
-			if(File.Exists(filePath))
-			{
 				// Read the json from the file into a string
-				string dataAsJson = File.ReadAllText(filePath); 
+//				string dataAsJson = File.ReadAllText(filePath); 
+			string dataAsJson = (Resources.Load("cards") as TextAsset).ToString ();
 				// Pass the json to JsonUtility, and tell it to create a GameData object from it
 				var allCards = JsonUtility.FromJson<AllCards>(dataAsJson);
 				_loadedCards = allCards.gameCards; 
-			}
-			else
-			{
-				Debug.LogError("Cannot load game data!");
-			}
+//			}
+//			else
+//			{
+//				Debug.LogError("Cannot load game data!");
+//			}
 
 		}
 

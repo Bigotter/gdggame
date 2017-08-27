@@ -11,7 +11,6 @@ public class ApplyIconValue
 
     public void Apply(GameObject gameObjectIcon, int newValue)
     {
-        Debug.Log(_previousValue + " " + newValue);
         if (_previousValue != newValue)
         {
             UpdateIcon(gameObjectIcon, newValue);

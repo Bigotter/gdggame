@@ -38,7 +38,6 @@ class CalculateDeltaMouse : CalculateDelta
 	bool CalculateDelta.IsMoving ()
 	{
 		if (!buttonDown && Input.GetMouseButtonDown (0)) {
-			Debug.Log ("press");
 			startMousePos = getInputPosition();
 			buttonDown = true;
 		}

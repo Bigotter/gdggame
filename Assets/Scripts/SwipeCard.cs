@@ -124,8 +124,6 @@ public class SwipeCard : MonoBehaviour
 
         Vector3 diffInWorld = CalculateDelta.CalculateDiffInWorld();
 
-        Debug.Log("moving: " + diff.x + " " + diffInWorld.x);
-
         Vector3 newPos = CalculatePosition(CurrentCard.transform.position, diffInWorld);
 
 
