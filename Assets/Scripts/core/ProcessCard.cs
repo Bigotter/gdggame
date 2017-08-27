@@ -7,8 +7,10 @@ namespace core
         private static ProcessCard _instance;
         public const int MaxHappiness = 100;
         public const int MaxMoney = 100;
+		public const int MaxTime = 28;
         public const int InitHappiness = MaxHappiness;
-        public const int InitMoney = 0;
+		public const int InitTime = MaxTime;
+        public const int InitMoney = 100;
         
 
         public ProcessCard()
@@ -17,6 +19,7 @@ namespace core
 
         public int Money { get; private set; }
         public int Happiness { get; private set; }
+		public int Time { get; private set; }
 
         public static ProcessCard Instance()
         {
@@ -46,6 +49,7 @@ namespace core
 				
 			ApplyHappiness(happiness);
 			ApplyMoney(money);
+			ApplyTime (time);
         }
 
         private void ApplyHappiness(int happinessMod)
@@ -69,5 +73,17 @@ namespace core
 				Money = 0;
 			}
         }
+
+		private void ApplyTime(int timeModification)
+		{
+			Time += timeModification;
+			if (Time > MaxMoney) {
+				Money = MaxMoney;
+			}
+			if (Money < 0) {
+				Money = 0;
+			}
+		}
+
     }
 }
