@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using System.IO;
+using System.Linq;
 
 namespace core
 {
@@ -33,7 +34,15 @@ namespace core
 
 		private readonly Dictionary<string,Texture2D> _faces = new Dictionary<string,Texture2D>();
 
-		private List<CardDefinition> _loadedCards = null;
+		private Stack<CardDefinition> _preEventCards = new Stack<CardDefinition>();
+
+		private Stack<CardDefinition> _eventCards = new Stack<CardDefinition>();
+
+		private List<CardDefinition> _postEventCards = new List<CardDefinition>();
+
+		int _currentLevel;
+
+		List<CardDefinition> _allCards;
 
 	    public CardProvider()
 	    {
@@ -90,9 +99,11 @@ namespace core
 				pos++;
 	        }
 			LoadCards ();
+			LoadLevel (0);
 	    }
 
 	    public Card CurrentCard { get; set; }
+		public CardDefinition CurrentCardDefinition { get; set;}
 
 	    public static CardProvider Instance()
 	    {
@@ -103,21 +114,59 @@ namespace core
 	    {
 	        var color = RandomColor();
 
-			var card = RandomCard ();
+			var card = obtainNextCard ();
 			var image = chooseFace(card.image);
+
+			CurrentCardDefinition = card;
 			CurrentCard = new Card(image: image, color: color, description: card.text, 
 				rightText: card.right.text,rightMoney: card.right.money, rightHappiness:card.right.happiness, rightTime: card.right.time, 
 				leftText: card.left.text, leftMoney: card.left.money, leftHappiness: card.left.happiness, leftTime: card.left.time);
+			
 	        return CurrentCard;
 	    }
 
 		void LoadCards ()
 		{
-
 			string dataAsJson = (Resources.Load("cards") as TextAsset).ToString ();
-			var allCards = JsonUtility.FromJson<AllCards>(dataAsJson);
-			_loadedCards = allCards.gameCards; 
+			var cards = JsonUtility.FromJson<AllCards>(dataAsJson);
+			_allCards = cards.gameCards; 
+		}
 
+		void LoadLevel(int level) {
+			_currentLevel = level;
+
+			_preEventCards.Clear ();
+			_postEventCards.Clear ();
+			_eventCards.Clear ();
+
+			foreach (var card in _allCards) {
+				if (card.IsInitial()) {
+					if (card.IsPreEvent ()) {
+						_preEventCards.Push (card);
+					} else if (card.IsEventCard ()) {
+						_eventCards.Push (card);
+					}
+				}
+			}
+
+			_preEventCards = shuffle (_preEventCards);
+			_eventCards = shuffle (_eventCards);
+
+			Debug.Log ("num cards " + _preEventCards.Count);
+		}
+
+		private Stack<T> shuffle<T>(Stack<T> stack)
+		{
+			List<T> list = stack.ToList();
+			stack.Clear ();
+			while(list.Count > 0)
+			{
+				int randomIndex = Random.Range(0, list.Count);
+				stack.Push(list[randomIndex]);
+				list.RemoveAt(randomIndex);
+			}
+
+			return stack;
 		}
 
 	    private string RandomText()
@@ -126,10 +175,15 @@ namespace core
 	        return _ask[selected];
 	    }
 
-		private CardDefinition RandomCard ()
+		private CardDefinition obtainNextCard ()
 		{
-			var selected = Random.Range(0, _loadedCards.Count);
-			return _loadedCards[selected];
+			if (_preEventCards.Count > 0) {
+				return _preEventCards.Pop ();
+			} else {
+				Debug.Log ("empty deck");
+				LoadLevel (0);
+				return obtainNextCard ();
+			}
 		}
 
 		private Texture2D chooseFace (string image)
@@ -140,8 +194,7 @@ namespace core
 				Debug.Log ("not found: " + image);
 				return _faces ["BadSponsor.png"];
 			}
-		}
-				
+		}				
 
 	    private Color RandomColor()
 	    {
