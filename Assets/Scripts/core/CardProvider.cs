@@ -40,9 +40,12 @@ namespace core
 
 		private List<CardDefinition> _postEventCards = new List<CardDefinition>();
 
-		int _currentLevel;
+		private int _currentLevel; 
+		private EVENT_STATE _currentEventState;
+
 
 		Dictionary<String,CardDefinition> _allCards = new Dictionary<String, CardDefinition>();
+		Dictionary<String,CardDefinition> _levelCards = new Dictionary<String, CardDefinition>();
 
 	    public CardProvider()
 	    {
@@ -99,7 +102,7 @@ namespace core
 				pos++;
 	        }
 			LoadCards ();
-			LoadLevel (0);
+			LoadLevel (1);
 	    }
 
 	    public Card CurrentCard { get; set; }
@@ -148,10 +151,12 @@ namespace core
 		void AddCard (string id)
 		{
 			var card = getCard (id);
-			if (card.IsPreEvent ()) {
-				_preEventCards.Push (card);
-			} else if (card.IsEventCard ()) {
-				_eventCards.Push (card);
+			if (card != null) {
+				if (card.IsPreEvent ()) {
+					_preEventCards.Push (card);
+				} else if (card.IsEventCard ()) {
+					_eventCards.Push (card);
+				}
 			}
 		}
 
@@ -166,21 +171,27 @@ namespace core
 
 		void LoadLevel(int level) {
 			_currentLevel = level;
+			_currentEventState = EVENT_STATE.STATE_PRE_EVENT;
 
 			_preEventCards.Clear ();
 			_postEventCards.Clear ();
 			_eventCards.Clear ();
+			_levelCards.Clear ();
 
 			foreach (var card in _allCards.Values) {
-				if (card.IsInitial()) {
-					if (card.IsPreEvent ()) {
-						_preEventCards.Push (card);
-					} else if (card.IsEventCard ()) {
-						_eventCards.Push (card);
+				if (card.level == _currentLevel) {
+					if (card.IsInitial ()) {
+						if (card.IsPreEvent ()) {
+							_preEventCards.Push (card);
+						} else if (card.IsEventCard ()) {
+							_eventCards.Push (card);
+						}
+					} else {
+						_levelCards.Add (card.id, card);
 					}
 				}
 			}
-
+				
 			_preEventCards = shuffle (_preEventCards);
 			_eventCards = shuffle (_eventCards);
 		}
@@ -188,8 +199,11 @@ namespace core
 		CardDefinition getCard (string id)
 		{
 			try {
-				return _allCards [id];
-			} catch (Exception e) {
+				var cardToReturn = _levelCards [id];
+				_levelCards.Remove(id);
+				return cardToReturn;
+			
+			} catch (Exception exception) {
 				Debug.Log ("key not found: " + id);
 				return null;
 			}
@@ -218,13 +232,51 @@ namespace core
 
 		private CardDefinition obtainNextCard ()
 		{
-			if (_preEventCards.Count > 0) {
-				return _preEventCards.Pop ();
+			if (_currentEventState == EVENT_STATE.STATE_PRE_EVENT) {
+				if (_preEventCards.Count > 0 && ProcessCard.Instance ().Time < 28) {
+					return _preEventCards.Pop ();
+				} else {
+					return StartEvent ();
+				}
+			} else if (_currentEventState == EVENT_STATE.STATE_EVENT) {
+				if (_eventCards.Count > 0) {
+					return _eventCards.Pop ();
+				} else {
+					ProcessCard.Instance ().Reset ();
+					LoadLevel (1);
+					return obtainNextCard ();
+				}
 			} else {
-				Debug.Log ("empty deck");
-				LoadLevel (0);
+				ProcessCard.Instance ().Reset ();
+				LoadLevel (1);
 				return obtainNextCard ();
 			}
+
+		}
+
+		CardDefinition StartEvent ()
+		{
+			_currentEventState = EVENT_STATE.STATE_EVENT;
+
+			CardDefinition startLevelCard = new CardDefinition();
+			startLevelCard.type = CardDefinition.TYPE_EVENT_START;
+			startLevelCard.isInitial = "FALSE";
+			startLevelCard.id = "-1";
+			startLevelCard.image = "Almo";
+			startLevelCard.text = "Start the Event. Are you ready?";
+			var leftDecision = new DecisionInfo ();
+			leftDecision.text = "Come On!";
+			leftDecision.nextCard = "";
+			leftDecision.cardsToAdd = new List<string>();
+			startLevelCard.left = leftDecision; 
+			var rightDecision = new DecisionInfo ();
+			rightDecision.text = "Yeah!!";
+			rightDecision.nextCard = "";
+			rightDecision.cardsToAdd = new List<string>();
+			startLevelCard.right = rightDecision; 
+
+			return startLevelCard;
+
 		}
 
 		private Texture2D chooseFace (string image)

@@ -27,7 +27,7 @@ namespace core
 		public string text;
 		public string type;
 		public string image;
-		public string level;
+		public int level;
 		public string isInitial;
 		public DecisionInfo left;
 		public DecisionInfo right;
