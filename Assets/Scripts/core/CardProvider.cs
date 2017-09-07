@@ -42,7 +42,7 @@ namespace core
 
 		int _currentLevel;
 
-		List<CardDefinition> _allCards;
+		Dictionary<String,CardDefinition> _allCards = new Dictionary<String, CardDefinition>();
 
 	    public CardProvider()
 	    {
@@ -112,8 +112,8 @@ namespace core
 
 	    public Card NextCard()
 	    {
+			Debug.Log ("num cards " + _preEventCards.Count);
 	        var color = RandomColor();
-
 			var card = obtainNextCard ();
 			var image = chooseFace(card.image);
 
@@ -125,11 +125,43 @@ namespace core
 	        return CurrentCard;
 	    }
 
+		public void AddCards (bool isLeft)
+		{
+			if (CurrentCardDefinition == null) {
+				return;		
+			}
+
+			var decision = (isLeft) ? CurrentCardDefinition.left : CurrentCardDefinition.right;
+			if (decision.cardsToAdd.Count > 0) {
+				decision.cardsToAdd.ForEach (id => {
+					AddCard(id);
+				});
+				shuffle (_preEventCards);
+				shuffle (_eventCards);
+			}
+
+			if (!string.IsNullOrEmpty (decision.nextCard)) {
+				AddCard (decision.nextCard);
+			}
+		}
+
+		void AddCard (string id)
+		{
+			var card = getCard (id);
+			if (card.IsPreEvent ()) {
+				_preEventCards.Push (card);
+			} else if (card.IsEventCard ()) {
+				_eventCards.Push (card);
+			}
+		}
+
 		void LoadCards ()
 		{
 			string dataAsJson = (Resources.Load("cards") as TextAsset).ToString ();
 			var cards = JsonUtility.FromJson<AllCards>(dataAsJson);
-			_allCards = cards.gameCards; 
+			_allCards.Clear ();
+			cards.gameCards.ForEach (card => _allCards.Add(card.id, card));
+
 		}
 
 		void LoadLevel(int level) {
@@ -139,7 +171,7 @@ namespace core
 			_postEventCards.Clear ();
 			_eventCards.Clear ();
 
-			foreach (var card in _allCards) {
+			foreach (var card in _allCards.Values) {
 				if (card.IsInitial()) {
 					if (card.IsPreEvent ()) {
 						_preEventCards.Push (card);
@@ -151,8 +183,17 @@ namespace core
 
 			_preEventCards = shuffle (_preEventCards);
 			_eventCards = shuffle (_eventCards);
+		}
 
-			Debug.Log ("num cards " + _preEventCards.Count);
+		CardDefinition getCard (string id)
+		{
+			try {
+				return _allCards [id];
+			} catch (Exception e) {
+				Debug.Log ("key not found: " + id);
+				return null;
+			}
+
 		}
 
 		private Stack<T> shuffle<T>(Stack<T> stack)

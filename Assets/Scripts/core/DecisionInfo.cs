@@ -13,6 +13,6 @@ namespace core
 		public int happiness;
 		public int time;
 		public string nextCard;
-		public string cardsToAdd;
+		public  List<String> cardsToAdd;
 	}
 }

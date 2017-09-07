@@ -53,6 +53,7 @@ public class SwipeCard : MonoBehaviour
 
     private void NextCard(GameObject currentCard)
     {
+		
         var nextCard = _cardProvider.NextCard();
 
         var guy = currentCard.transform.Find("guy");
@@ -246,7 +247,9 @@ public class SwipeCard : MonoBehaviour
         if (currentAnimation == Animation.SwipeLeft || currentAnimation == Animation.SwipeRight)
         {
 			
-			_processCard.ApplyCardEffect(_cardProvider.CurrentCard, currentAnimation == Animation.SwipeLeft);	
+			_processCard.ApplyCardEffect(_cardProvider.CurrentCard, 
+				currentAnimation == Animation.SwipeLeft);	
+			_cardProvider.AddCards (currentAnimation == Animation.SwipeLeft);
             NextCard(CurrentCard);
         }
         _animationInProgress = false;
