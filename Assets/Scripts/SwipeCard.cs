@@ -14,6 +14,7 @@ public class SwipeCard : MonoBehaviour
 	public Text CardResponse;
 	public Text CardName;
 	public Texture2D[] startEventTexture = new Texture2D[3];
+	public Texture2D[] endEventTexture = new Texture2D[3];
 
 #if UNITY_ANDROID || UNITY_IOS
     private CalculateDelta CalculateDelta = new CalculateDeltaTouch();
@@ -63,7 +64,8 @@ public class SwipeCard : MonoBehaviour
         var nextCard = _cardProvider.NextCard();
         var guy = currentCard.transform.Find("guy");
 
-		if (nextCard.CardType != CardDefinition.TYPE_EVENT_START_ANIM) {
+		if (nextCard.CardType != CardDefinition.TYPE_EVENT_START_ANIM
+			&& nextCard.CardType != CardDefinition.TYPE_EVENT_END_ANIM) {
 			var spriteGuy = guy.GetComponent<SpriteRenderer> ();
 			var nextImage = nextCard.Image;
 			spriteGuy.sprite = Sprite.Create (nextImage,
@@ -131,12 +133,17 @@ public class SwipeCard : MonoBehaviour
 
 	void animateSprite ()
 	{
-		if (_cardType == CardDefinition.TYPE_EVENT_START_ANIM) {
+		if (_cardType == CardDefinition.TYPE_EVENT_START_ANIM 
+			|| _cardType == CardDefinition.TYPE_EVENT_END_ANIM) {
 			if (_lastSpriteAnimUpdate > 0.5f) {
 				var guy = CurrentCard.transform.Find ("guy");
 
 				var spriteGuy = guy.GetComponent<SpriteRenderer> ();
-				var nextImage = startEventTexture[animSprite];
+
+				var nextImage = (_cardType == CardDefinition.TYPE_EVENT_START_ANIM) ?
+					startEventTexture[animSprite] :
+					endEventTexture[animSprite];
+
 				spriteGuy.sprite = Sprite.Create (nextImage,
 					new Rect (0, 0, nextImage.width, nextImage.height),
 					new Vector2 (0.5f, 0.5f));

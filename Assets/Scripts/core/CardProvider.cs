@@ -45,7 +45,7 @@ namespace core
 
 		private Stack<CardDefinition> _eventCards = new Stack<CardDefinition>();
 
-		private List<CardDefinition> _postEventCards = new List<CardDefinition>();
+		private Stack<CardDefinition> _postEventCards = new Stack<CardDefinition>();
 
 		private int _currentLevel; 
 		private EVENT_STATE _currentEventState;
@@ -184,6 +184,7 @@ namespace core
 				});
 				shuffle (_preEventCards);
 				shuffle (_eventCards);
+				shuffle (_postEventCards);
 			}
 
 			if (!string.IsNullOrEmpty (decision.nextCard)) {
@@ -204,6 +205,8 @@ namespace core
 					_preEventCards.Push (card);
 				} else if (card.IsEventCard ()) {
 					_eventCards.Push (card);
+				} else if (card.IsPostEventCard ()) {
+					_postEventCards.Push (card);
 				}
 			}
 		}
@@ -233,6 +236,8 @@ namespace core
 							_preEventCards.Push (card);
 						} else if (card.IsEventCard ()) {
 							_eventCards.Push (card);
+						} else if (card.IsPostEventCard()) {
+							_postEventCards.Push(card);
 						}
 					} else {
 						_levelCards.Add (card.id, card);
@@ -294,6 +299,12 @@ namespace core
 				if (_eventCards.Count > 0) {
 					return _eventCards.Pop ();
 				} else {
+					return StartPostEvent ();
+				}
+			} else if (_currentEventState == EVENT_STATE.STATE_POST_EVENT) {
+				if (_postEventCards.Count > 0) {
+					return _postEventCards.Pop ();
+				} else {
 					ProcessCard.Instance ().Reset ();
 					LoadLevel (1);
 					return obtainNextCard ();
@@ -330,6 +341,30 @@ namespace core
 
 			return startLevelCard;
 
+		}
+
+		CardDefinition StartPostEvent ()
+		{
+			_currentEventState = EVENT_STATE.STATE_POST_EVENT;
+
+			CardDefinition endLevelCard = new CardDefinition();
+			endLevelCard.type = CardDefinition.TYPE_EVENT_END_ANIM;
+			endLevelCard.isInitial = "FALSE";
+			endLevelCard.id = "-1";
+			endLevelCard.image = "Almo";
+			endLevelCard.text = "The event ended. Yay!";
+			var leftDecision = new DecisionInfo ();
+			leftDecision.text = "Yeah!";
+			leftDecision.nextCard = "";
+			leftDecision.cardsToAdd = new List<string>();
+			endLevelCard.left = leftDecision; 
+			var rightDecision = new DecisionInfo ();
+			rightDecision.text = "Uff!";
+			rightDecision.nextCard = "";
+			rightDecision.cardsToAdd = new List<string>();
+			endLevelCard.right = rightDecision; 
+
+			return endLevelCard;
 		}
 
 		private Texture2D chooseFace (string image)
