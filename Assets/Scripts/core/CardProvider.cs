@@ -54,6 +54,8 @@ namespace core
 		Dictionary<String,CardDefinition> _allCards = new Dictionary<String, CardDefinition>();
 		Dictionary<String,CardDefinition> _levelCards = new Dictionary<String, CardDefinition>();
 
+		private CardDefinition _startLevelCard;
+
 		private Dictionary<string,string> _names = new Dictionary<string,string>();
 
 
@@ -155,6 +157,7 @@ namespace core
 	    {
 			Debug.Log ("num cards " + _preEventCards.Count);
 			var card = obtainNextCard ();
+			Debug.Log ("next card " + card.id);
 			var color = RandomColor(card.type);
 			var image = chooseFace(card.image);
 			var name = chooseName (card.image);
@@ -184,13 +187,18 @@ namespace core
 			}
 
 			if (!string.IsNullOrEmpty (decision.nextCard)) {
-				AddCard (decision.nextCard);
+				AddCard (decision.nextCard, true);
 			}
 		}
 
-		void AddCard (string id)
+		void AddCard(String id) {
+			AddCard(id, false);
+		}
+
+		void AddCard (string id, bool force)
 		{
-			var card = getCard (id);
+			Debug.Log ("add card " + id + " "+force);
+			var card = getCard (id, force);
 			if (card != null) {
 				if (card.IsPreEvent ()) {
 					_preEventCards.Push (card);
@@ -229,6 +237,10 @@ namespace core
 					} else {
 						_levelCards.Add (card.id, card);
 					}
+
+				  	if (card.IsStartEvent ()) {
+						_startLevelCard = card;
+					}
 				}
 			}
 				
@@ -236,10 +248,10 @@ namespace core
 			_eventCards = shuffle (_eventCards);
 		}
 
-		CardDefinition getCard (string id)
+		CardDefinition getCard (string id, bool force)
 		{
 			try {
-				var cardToReturn = _levelCards [id];
+				var cardToReturn = (force)? _allCards[id] : _levelCards [id];
 				_levelCards.Remove(id);
 				return cardToReturn;
 			
@@ -296,10 +308,11 @@ namespace core
 
 		CardDefinition StartEvent ()
 		{
+			_eventCards.Push (_startLevelCard);
 			_currentEventState = EVENT_STATE.STATE_EVENT;
 
 			CardDefinition startLevelCard = new CardDefinition();
-			startLevelCard.type = CardDefinition.TYPE_EVENT_START;
+			startLevelCard.type = CardDefinition.TYPE_EVENT_START_ANIM;
 			startLevelCard.isInitial = "FALSE";
 			startLevelCard.id = "-1";
 			startLevelCard.image = "Almo";

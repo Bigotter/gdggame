@@ -63,12 +63,14 @@ public class SwipeCard : MonoBehaviour
         var nextCard = _cardProvider.NextCard();
         var guy = currentCard.transform.Find("guy");
 
-		if (nextCard.CardType != CardDefinition.TYPE_EVENT_START) {
+		if (nextCard.CardType != CardDefinition.TYPE_EVENT_START_ANIM) {
 			var spriteGuy = guy.GetComponent<SpriteRenderer> ();
 			var nextImage = nextCard.Image;
 			spriteGuy.sprite = Sprite.Create (nextImage,
 				new Rect (0, 0, nextImage.width, nextImage.height),
 				new Vector2 (0.5f, 0.5f));
+		} else {
+			animateSprite ();
 		}
 
         var background = currentCard.transform.Find("background");
@@ -129,7 +131,7 @@ public class SwipeCard : MonoBehaviour
 
 	void animateSprite ()
 	{
-		if (_cardType == CardDefinition.TYPE_EVENT_START) {
+		if (_cardType == CardDefinition.TYPE_EVENT_START_ANIM) {
 			if (_lastSpriteAnimUpdate > 0.5f) {
 				var guy = CurrentCard.transform.Find ("guy");
 

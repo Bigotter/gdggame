@@ -14,6 +14,7 @@ namespace core
 		public const string TYPE_PLACE = "Place";
 		public const string TYPE_MEDIA = "Media";
 		public const string TYPE_EVENT_START = "Event_Start";
+		public const string TYPE_EVENT_START_ANIM= "Event_Start_Anim";
 		public const string TYPE_EVENT_PLACE= "Event_Place";
 		public const string TYPE_EVENT_SPEAKER = "Event_Speaker";
 		public const string TYPE_EVENT_ATTENDANTS = "Event_Attendants";
@@ -46,6 +47,11 @@ namespace core
 			|| type.Equals (TYPE_EVENT_SPEAKER)
 			|| type.Equals (TYPE_EVENT_ATTENDANTS)
 			|| type.Equals (TYPE_EVENT_MEDIA);
+		}
+
+		public bool IsStartEvent ()
+		{
+			return type.Equals(TYPE_EVENT_START);
 		}
 
 		public bool IsInitial() {
