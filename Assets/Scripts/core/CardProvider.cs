@@ -81,7 +81,7 @@ namespace core
 				"place_organizer1",
 				"Vanessa",
 				"Vero",
-				"Assistant",
+				"Asistant",
 				"Place2"
 			};
 
@@ -131,7 +131,7 @@ namespace core
 				"FancyPlace.png",
 				"Vanessa.png",
 				"Vero.png",
-				"Assistant.png",
+				"Asistant.png",
 				"Place2.png"
 			};
 			int pos = 0;
