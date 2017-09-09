@@ -47,9 +47,12 @@ namespace core
 		Dictionary<String,CardDefinition> _allCards = new Dictionary<String, CardDefinition>();
 		Dictionary<String,CardDefinition> _levelCards = new Dictionary<String, CardDefinition>();
 
+		private Dictionary<string,string> _names = new Dictionary<string,string>();
+
+
 	    public CardProvider()
 	    {
-			var faces = new[] {
+			string[] fileNames = new[] {
 				"Abdon",
 				"Alicia", 
 				"Almo", 
@@ -71,6 +74,30 @@ namespace core
 				"Vanessa",
 				"Vero"
 			};
+
+			string[] names = new[] {
+				"Abdon",
+				"Alicia", 
+				"Almo", 
+				"Ana",
+				"Andreu",
+				"Sponsor", 
+				"Eliezer",
+				"Fran", 
+				"Rubén",
+				"Gem",
+				"Flipper",
+				"Laura",
+				"Mario",
+				"Nieves",
+				"Paco",
+				"Paola",
+				"Pizza Guy",
+				"Organizer",
+				"Vanessa",
+				"Vero"
+			};
+
 			var keys = new[] {
 				"Abdon2.png", 
 				"Alicia.png", 
@@ -94,11 +121,15 @@ namespace core
 				"Vero.png"
 			};
 			int pos = 0;
-	        foreach (var face in faces)
+	        foreach (var face in fileNames)
 	        {
+				
 	            var name = "faces/" + face;
 	            var textureToAdd = Resources.Load<Texture2D>(name) as Texture2D;
 				_faces.Add(keys[pos],textureToAdd);
+
+				_names.Add (keys[pos], names [pos]);
+
 				pos++;
 	        }
 			LoadCards ();
@@ -119,11 +150,12 @@ namespace core
 	        var color = RandomColor();
 			var card = obtainNextCard ();
 			var image = chooseFace(card.image);
+			var name = chooseName (card.image);
 
 			CurrentCardDefinition = card;
 			CurrentCard = new Card(image: image, color: color, description: card.text, 
 				rightText: card.right.text,rightMoney: card.right.money, rightHappiness:card.right.happiness, rightTime: card.right.time, 
-				leftText: card.left.text, leftMoney: card.left.money, leftHappiness: card.left.happiness, leftTime: card.left.time);
+				leftText: card.left.text, leftMoney: card.left.money, leftHappiness: card.left.happiness, leftTime: card.left.time,name: name);
 			
 	        return CurrentCard;
 	    }
@@ -287,7 +319,19 @@ namespace core
 				Debug.Log ("not found: " + image);
 				return _faces ["BadSponsor.png"];
 			}
-		}				
+		}	
+
+		private string chooseName (string image)
+		{
+			if (_names.ContainsKey (image)) {
+				return _names [image];
+			} else {
+				
+				return "Someone";
+			}
+		}
+
+			
 
 	    private Color RandomColor()
 	    {

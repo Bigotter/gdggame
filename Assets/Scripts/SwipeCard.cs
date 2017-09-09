@@ -12,6 +12,7 @@ public class SwipeCard : MonoBehaviour
     public float MoveTime = 0.5f;
     public Text CardDescText;
 	public Text CardResponse;
+	public Text CardName;
 
 #if UNITY_ANDROID || UNITY_IOS
     private CalculateDelta CalculateDelta = new CalculateDeltaTouch();
@@ -69,6 +70,7 @@ public class SwipeCard : MonoBehaviour
         spriteBackground.color = nextCard.Color;
 
         CardDescText.text = nextCard.Description;
+		CardName.text = nextCard.Name;
 		_rightText = nextCard.RightText;
 		_leftText = nextCard.LeftText;
 

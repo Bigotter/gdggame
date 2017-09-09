@@ -27,13 +27,16 @@ namespace core
 
         public string Description { get; private set; }
 
+		public string Name { get; private set;}
+
         private Texture2D _image;
         private Color _color;
         
 
 		public Card(Texture2D image, Color color, string description, 
 			string rightText, int rightMoney, int rightHappiness, int rightTime,
-			string leftText, int leftMoney, int leftHappiness, int leftTime )
+			string leftText, int leftMoney, int leftHappiness, int leftTime, 
+			string name)
         {
             _image = image;
             _color = color;
@@ -48,6 +51,7 @@ namespace core
 			LeftMoney = leftMoney;
 			LeftHappiness = leftHappiness;
 			LeftTime = leftTime;
+			Name = name;
         }
     }
 }
