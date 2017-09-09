@@ -11,12 +11,19 @@ namespace core
 	{
 	    private static CardProvider _instance;
 
+		private static int COLOR_GREEN = 0;
+		private static int COLOR_YELLOW = 1;
+		private static int COLOR_RED = 2;
+		private static int COLOR_BLUE = 3;
+		private static int COLOR_WHITE = 4;
+
 	    private readonly Color[] _colors =
 	    {
 	        new Color(10 / 255.0f, 162 / 255.0f, 90 / 255.0f),
 	        new Color(249 / 255.0f, 199 / 255.0f, 64 / 255.0f),
 	        new Color(211 / 255.0f, 61 / 255.0f, 51 / 255.0f),
-	        new Color(68 / 255.0f, 132 / 255.0f, 242 / 255.0f)
+	        new Color(68 / 255.0f, 132 / 255.0f, 242 / 255.0f),
+			new Color(1.0f,1.0f,1.0f)
 	    };
 
 	    private readonly String[] _ask =
@@ -147,15 +154,16 @@ namespace core
 	    public Card NextCard()
 	    {
 			Debug.Log ("num cards " + _preEventCards.Count);
-	        var color = RandomColor();
 			var card = obtainNextCard ();
+			var color = RandomColor(card.type);
 			var image = chooseFace(card.image);
 			var name = chooseName (card.image);
 
 			CurrentCardDefinition = card;
 			CurrentCard = new Card(image: image, color: color, description: card.text, 
 				rightText: card.right.text,rightMoney: card.right.money, rightHappiness:card.right.happiness, rightTime: card.right.time, 
-				leftText: card.left.text, leftMoney: card.left.money, leftHappiness: card.left.happiness, leftTime: card.left.time,name: name);
+				leftText: card.left.text, leftMoney: card.left.money, leftHappiness: card.left.happiness, 
+				leftTime: card.left.time,name: name, type: card.type);
 			
 	        return CurrentCard;
 	    }
@@ -333,8 +341,12 @@ namespace core
 
 			
 
-	    private Color RandomColor()
+		private Color RandomColor(string cardType)
 	    {
+			if (cardType == CardDefinition.TYPE_EVENT_START) {
+				return _colors [COLOR_WHITE];
+			}
+				
 	        var selected = Random.Range(0, _colors.Length);
 	        return _colors[selected];
 	    }

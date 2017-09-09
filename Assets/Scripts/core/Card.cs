@@ -29,6 +29,8 @@ namespace core
 
 		public string Name { get; private set;}
 
+		public string CardType { get; private set;}
+
         private Texture2D _image;
         private Color _color;
         
@@ -36,7 +38,7 @@ namespace core
 		public Card(Texture2D image, Color color, string description, 
 			string rightText, int rightMoney, int rightHappiness, int rightTime,
 			string leftText, int leftMoney, int leftHappiness, int leftTime, 
-			string name)
+			string name, string type)
         {
             _image = image;
             _color = color;
@@ -52,6 +54,7 @@ namespace core
 			LeftHappiness = leftHappiness;
 			LeftTime = leftTime;
 			Name = name;
+			CardType = type;
         }
     }
 }

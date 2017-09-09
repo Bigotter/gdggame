@@ -13,6 +13,7 @@ public class SwipeCard : MonoBehaviour
     public Text CardDescText;
 	public Text CardResponse;
 	public Text CardName;
+	public Texture2D[] startEventTexture = new Texture2D[3];
 
 #if UNITY_ANDROID || UNITY_IOS
     private CalculateDelta CalculateDelta = new CalculateDeltaTouch();
@@ -32,6 +33,11 @@ public class SwipeCard : MonoBehaviour
 
 	private string _rightText;
 	private string _leftText;
+	string _cardType;
+
+	float _lastSpriteAnimUpdate;
+
+	int animSprite;
 
     enum Animation
     {
@@ -54,16 +60,16 @@ public class SwipeCard : MonoBehaviour
 
     private void NextCard(GameObject currentCard)
     {
-		
         var nextCard = _cardProvider.NextCard();
-
         var guy = currentCard.transform.Find("guy");
-        var spriteGuy = guy.GetComponent<SpriteRenderer>();
-        var nextImage = nextCard.Image;
-        spriteGuy.sprite = Sprite.Create(nextImage,
-            new Rect(0, 0, nextImage.width, nextImage.height),
-            new Vector2(0.5f, 0.5f));
 
+		if (nextCard.CardType != CardDefinition.TYPE_EVENT_START) {
+			var spriteGuy = guy.GetComponent<SpriteRenderer> ();
+			var nextImage = nextCard.Image;
+			spriteGuy.sprite = Sprite.Create (nextImage,
+				new Rect (0, 0, nextImage.width, nextImage.height),
+				new Vector2 (0.5f, 0.5f));
+		}
 
         var background = currentCard.transform.Find("background");
         var spriteBackground = background.GetComponent<SpriteRenderer>();
@@ -73,12 +79,15 @@ public class SwipeCard : MonoBehaviour
 		CardName.text = nextCard.Name;
 		_rightText = nextCard.RightText;
 		_leftText = nextCard.LeftText;
+		_cardType = nextCard.CardType;
 
 		CardResponse.enabled = false;
     }
 
     void Update()
     {
+		animateSprite ();
+
         if (!_animationInProgress)
         {
             if (CalculateDelta.IsMoving())
@@ -118,6 +127,29 @@ public class SwipeCard : MonoBehaviour
         }
     }
 
+	void animateSprite ()
+	{
+		if (_cardType == CardDefinition.TYPE_EVENT_START) {
+			if (_lastSpriteAnimUpdate > 0.5f) {
+				var guy = CurrentCard.transform.Find ("guy");
+
+				var spriteGuy = guy.GetComponent<SpriteRenderer> ();
+				var nextImage = startEventTexture[animSprite];
+				spriteGuy.sprite = Sprite.Create (nextImage,
+					new Rect (0, 0, nextImage.width, nextImage.height),
+					new Vector2 (0.5f, 0.5f));
+				_lastSpriteAnimUpdate = 0;
+
+				animSprite ++;
+				if (animSprite >= startEventTexture.Length) {
+					animSprite = 0;
+				}
+
+			} else {
+				_lastSpriteAnimUpdate += Time.deltaTime;
+			}
+		}
+	}
 
     private void MoveCard()
     {
@@ -248,7 +280,6 @@ public class SwipeCard : MonoBehaviour
         CurrentCard.transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
         if (currentAnimation == Animation.SwipeLeft || currentAnimation == Animation.SwipeRight)
         {
-			
 			_processCard.ApplyCardEffect(_cardProvider.CurrentCard, 
 				currentAnimation == Animation.SwipeLeft);	
 			_cardProvider.AddCards (currentAnimation == Animation.SwipeLeft);
