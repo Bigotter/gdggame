@@ -9,9 +9,9 @@ namespace core
         public const int MaxHappiness = 100;
         public const int MaxMoney = 100;
 		public const int MaxTime = 28;
-        public const int InitHappiness = MaxHappiness;
+        public const int InitHappiness = 50;
 		public const int InitTime = 0;
-        public const int InitMoney = 100;
+        public const int InitMoney = 50;
         
 
         public ProcessCard()
