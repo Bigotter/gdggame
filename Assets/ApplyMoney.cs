@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Net;
 using core;
 using UnityEngine;
@@ -18,6 +16,7 @@ public class ApplyMoney : MonoBehaviour
     {
         var processCard = ProcessCard.Instance();
 
+		Debug.Log ("money " + processCard.Money);
         _applyIconValue.Apply(gameObject, processCard.Money);
     }
 }

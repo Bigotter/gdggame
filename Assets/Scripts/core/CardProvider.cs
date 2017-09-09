@@ -47,7 +47,7 @@ namespace core
 
 		private Stack<CardDefinition> _postEventCards = new Stack<CardDefinition>();
 
-		private int _currentLevel; 
+		private int _currentLevel = 0; 
 		private EVENT_STATE _currentEventState;
 
 
@@ -57,7 +57,6 @@ namespace core
 		private CardDefinition _startLevelCard;
 
 		private Dictionary<string,string> _names = new Dictionary<string,string>();
-
 
 	    public CardProvider()
 	    {
@@ -81,7 +80,9 @@ namespace core
 				"pizza_guy",
 				"place_organizer1",
 				"Vanessa",
-				"Vero"
+				"Vero",
+				"Assistant",
+				"Place2"
 			};
 
 			string[] names = new[] {
@@ -102,9 +103,11 @@ namespace core
 				"Paco",
 				"Paola",
 				"Pizza Guy",
-				"Organizer",
+				"Fancy Sponsor",
 				"Vanessa",
-				"Vero"
+				"Vero",
+				"Fer",
+				"Awesome Sponsor"
 			};
 
 			var keys = new[] {
@@ -127,7 +130,9 @@ namespace core
 				"Pizzaguy.png",
 				"FancyPlace.png",
 				"Vanessa.png",
-				"Vero.png"
+				"Vero.png",
+				"Assistant.png",
+				"Place2.png"
 			};
 			int pos = 0;
 	        foreach (var face in fileNames)
@@ -142,7 +147,7 @@ namespace core
 				pos++;
 	        }
 			LoadCards ();
-			LoadLevel (1);
+			LoadLevel ();
 	    }
 
 	    public Card CurrentCard { get; set; }
@@ -220,8 +225,11 @@ namespace core
 
 		}
 
-		void LoadLevel(int level) {
-			_currentLevel = level;
+		void LoadLevel() {
+			_currentLevel ++;
+			if (_currentLevel > 2) {
+				_currentLevel = 1;
+			}
 			_currentEventState = EVENT_STATE.STATE_PRE_EVENT;
 
 			_preEventCards.Clear ();
@@ -306,12 +314,12 @@ namespace core
 					return _postEventCards.Pop ();
 				} else {
 					ProcessCard.Instance ().Reset ();
-					LoadLevel (1);
+					LoadLevel ();
 					return obtainNextCard ();
 				}
 			} else {
 				ProcessCard.Instance ().Reset ();
-				LoadLevel (1);
+				LoadLevel ();
 				return obtainNextCard ();
 			}
 
@@ -343,8 +351,32 @@ namespace core
 
 		}
 
+		void AddPostEvents ()
+		{
+			foreach (var cardTuple in _levelCards) {
+				var card = cardTuple.Value;
+				if (card.IsPostEventCard()) {
+					var currentHappiness = ProcessCard.Instance ().Happiness;
+					var currentMoney = ProcessCard.Instance ().Money;
+
+					if (card.right.happiness > 0 && currentHappiness <= card.right.happiness) {
+						_postEventCards.Push (card);
+					} else if (card.left.happiness > 0 && currentHappiness >= card.left.happiness) {
+						_postEventCards.Push (card);
+					} else if (card.right.money > 0 && currentMoney <= card.right.money) {
+						_postEventCards.Push (card);
+					} else if (card.left.money > 0 && currentMoney >= card.left.money) {
+						_postEventCards.Push (card);
+					}
+				}
+			}
+
+			shuffle (_postEventCards);
+		}
+
 		CardDefinition StartPostEvent ()
 		{
+			AddPostEvents ();
 			_currentEventState = EVENT_STATE.STATE_POST_EVENT;
 
 			CardDefinition endLevelCard = new CardDefinition();
