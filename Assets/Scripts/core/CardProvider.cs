@@ -423,12 +423,21 @@ namespace core
 
 		private Color RandomColor(string cardType)
 	    {
-			if (cardType == CardDefinition.TYPE_EVENT_START) {
-				return _colors [COLOR_WHITE];
+			if (cardType == CardDefinition.TYPE_SPEAKER
+			    || cardType == CardDefinition.TYPE_EVENT_SPEAKER) {
+				return _colors [COLOR_GREEN];
+			} else if (cardType == CardDefinition.TYPE_PLACE
+			           || cardType == CardDefinition.TYPE_EVENT_PLACE) {
+				return _colors [COLOR_YELLOW];
+			} else if (cardType == CardDefinition.TYPE_MEDIA
+				|| cardType == CardDefinition.TYPE_EVENT_MEDIA
+				|| cardType == CardDefinition.TYPE_EVENT_ATTENDANTS) {
+				return _colors [COLOR_RED];
+			} else if (cardType == CardDefinition.TYPE_MASTER) {
+				return _colors [COLOR_BLUE];
 			}
-				
-	        var selected = Random.Range(0, _colors.Length);
-	        return _colors[selected];
+	      
+			return _colors [COLOR_WHITE];
 	    }
 	}
 }
