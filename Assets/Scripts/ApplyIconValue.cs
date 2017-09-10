@@ -11,7 +11,7 @@ public class ApplyIconValue
 
     public void Apply(GameObject gameObjectIcon, int newValue)
     {
-        if (_previousValue != newValue)
+		if (_previousValue != newValue)
         {
             UpdateIcon(gameObjectIcon, newValue);
 

@@ -10,13 +10,12 @@ public class ApplyHappiness : MonoBehaviour
 
     void Start()
     {
-        _applyIconValue.Init(ProcessCard.InitHappiness, ProcessCard.InitHappiness, gameObject);
+        _applyIconValue.Init(ProcessCard.InitHappiness, ProcessCard.MaxHappiness, gameObject);
     }
 
     void Update()
     {
         var processCard = ProcessCard.Instance();
-
         _applyIconValue.Apply(gameObject, processCard.Happiness);
     }
 }
