@@ -56,7 +56,6 @@ public class scrollParallax : MonoBehaviour {
 		var first = list.FirstOrDefault();
 		if (first != null)
 		{
-			Debug.Log ("pos =" + first.position.x);
 			if (first.position.x < origin - limit)
 			{
 				var last = list.LastOrDefault();

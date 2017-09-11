@@ -227,7 +227,7 @@ namespace core
 
 		void LoadLevel() {
 			_currentLevel ++;
-			if (_currentLevel > 2) {
+			if (_currentLevel > 3) {
 				_currentLevel = 1;
 			}
 			_currentEventState = EVENT_STATE.STATE_PRE_EVENT;
