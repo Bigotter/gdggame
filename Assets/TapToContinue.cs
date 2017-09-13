@@ -14,10 +14,8 @@ public class TapToContinue : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (text.activeSelf && !load) {
-			bool tap = Input.anyKey || Input.touchCount > 0;
-			if (tap) {
-				Debug.Log ("load scene");
+		if (text.activeSelf && !load) {			
+			if (Input.anyKey || Input.touchCount > 0) {
 				SceneManager.LoadScene("coregame", LoadSceneMode.Single);
 			}
 		}

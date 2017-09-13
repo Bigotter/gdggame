@@ -9,15 +9,13 @@ public class menuPause : MonoBehaviour {
 	public GameObject _yesOption = null;
 	public GameObject _noOption = null;
 	public GameObject _topBar = null;
-	public GameObject _tapToStart = null;
 
 	bool isPause = false;
 
 	void Update () {
 		if( Input.GetKeyDown(KeyCode.Escape))
 		{
-			isPause = !isPause;
-			_menuPause.SetActive (isPause);
+			SetPause (!isPause);
 		}
 
 		if (isPause) {
@@ -30,8 +28,7 @@ public class menuPause : MonoBehaviour {
 					GameObject touchedObject = hitInformation.transform.gameObject;
 					Debug.Log ("hit " + touchedObject.name);
 					if (touchedObject == _topBar) {
-						isPause = true;
-						_menuPause.SetActive (isPause);
+						SetPause (true);
 					}
 				}
 			}
@@ -47,12 +44,17 @@ public class menuPause : MonoBehaviour {
 			Debug.Log ("hit "+touchedObject.name);
 			if (touchedObject == _yesOption) {
 				Application.Quit ();
-			} else if( touchedObject == _noOption){
-				isPause = false;
-				_menuPause.SetActive (isPause);
+			} else if( touchedObject == _noOption) {
+				SetPause (false);
 			} 
 		}
 	}	
+
+	void SetPause (bool pause)
+	{
+		isPause = !pause;
+		_menuPause.SetActive (pause);
+	}
 
 	RaycastHit2D getTouched() {
 		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) {
