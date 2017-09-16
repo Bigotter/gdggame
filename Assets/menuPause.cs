@@ -9,25 +9,27 @@ public class menuPause : MonoBehaviour {
 	public GameObject _yesOption = null;
 	public GameObject _noOption = null;
 	public GameObject _topBar = null;
+	public GameObject _bottomBar = null;
 
-	bool isPause = false;
+	bool _pause = false;
 
 	void Update () {
 		if( Input.GetKeyDown(KeyCode.Escape))
 		{
-			SetPause (!isPause);
+			SetPause (!_pause);
 		}
 
-		if (isPause) {
+		if (_pause) {
 			checkButtons ();
 		} else {
-			if (_topBar != null) {
+			if (_topBar != null || _bottomBar != null) {
 				RaycastHit2D hitInformation = getTouched ();
 
 				if (hitInformation.collider != null) {
 					GameObject touchedObject = hitInformation.transform.gameObject;
 					Debug.Log ("hit " + touchedObject.name);
-					if (touchedObject == _topBar) {
+					if (touchedObject != null 
+						&& (touchedObject == _topBar || touchedObject == _bottomBar)) {
 						SetPause (true);
 					}
 				}
@@ -41,7 +43,7 @@ public class menuPause : MonoBehaviour {
 
 		if (hitInformation.collider != null) {
 			GameObject touchedObject = hitInformation.transform.gameObject;
-			Debug.Log ("hit "+touchedObject.name);
+			Debug.Log ("hit buttons "+touchedObject.name);
 			if (touchedObject == _yesOption) {
 				Application.Quit ();
 			} else if( touchedObject == _noOption) {
@@ -52,7 +54,7 @@ public class menuPause : MonoBehaviour {
 
 	void SetPause (bool pause)
 	{
-		isPause = !pause;
+		_pause = pause;
 		_menuPause.SetActive (pause);
 	}
 
