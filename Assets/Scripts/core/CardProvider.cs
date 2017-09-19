@@ -26,19 +26,6 @@ namespace core
 			new Color(1.0f,1.0f,1.0f)
 	    };
 
-	    private readonly String[] _ask =
-	    {
-	        "Let's build your GDG local community",
-	        "I think this Rockstar speaker should be great for your event",
-	        "This young promise might be good for this occassion",
-	        "I would love to go to your event. I need to cover train tickets",
-	        "Thanks for mentioning that! Your event sounds awesome",
-	        "I will help with that",
-	        "Thanks for giving me the opportunity to participate in your event",
-	        "I need help with my train ticket",
-	        "Remember to keep expenses organized"
-	    };
-
 		private readonly Dictionary<string,Texture2D> _faces = new Dictionary<string,Texture2D>();
 
 		private Stack<CardDefinition> _preEventCards = new Stack<CardDefinition>();
@@ -147,7 +134,7 @@ namespace core
 				pos++;
 	        }
 			LoadCards ();
-			LoadLevel ();
+			_currentEventState = EVENT_STATE.STATE_INIT;
 	    }
 
 	    public Card CurrentCard { get; set; }
@@ -288,12 +275,7 @@ namespace core
 
 			return stack;
 		}
-
-	    private string RandomText()
-	    {
-	        var selected = Random.Range(0, _ask.Length);
-	        return _ask[selected];
-	    }
+			
 
 		private CardDefinition obtainNextCard ()
 		{
@@ -313,16 +295,44 @@ namespace core
 				if (_postEventCards.Count > 0) {
 					return _postEventCards.Pop ();
 				} else {
-					ProcessCard.Instance ().Reset ();
-					LoadLevel ();
-					return obtainNextCard ();
+					return StartLevel ();
 				}
+			} else if (_currentEventState == EVENT_STATE.STATE_INIT) {
+				return StartLevel ();
+			} else if (_currentEventState == EVENT_STATE.STATE_LEVEL) {
+				ProcessCard.Instance ().Reset ();
+				LoadLevel ();
+				return obtainNextCard ();
 			} else {
 				ProcessCard.Instance ().Reset ();
 				LoadLevel ();
 				return obtainNextCard ();
 			}
 
+		}
+
+		CardDefinition StartLevel ()
+		{
+			_currentEventState = EVENT_STATE.STATE_LEVEL;
+
+			CardDefinition startLevelCard = new CardDefinition();
+			startLevelCard.type = CardDefinition.TYPE_EVENT_LEVEL_ANIM;
+			startLevelCard.isInitial = "FALSE";
+			startLevelCard.id = "-1";
+			startLevelCard.image = "almo";
+			startLevelCard.text = "Level "+ (_currentLevel + 1);
+			var leftDecision = new DecisionInfo ();
+			leftDecision.text = "Go!";
+			leftDecision.nextCard = "";
+			leftDecision.cardsToAdd = new List<string>();
+			startLevelCard.left = leftDecision; 
+			var rightDecision = new DecisionInfo ();
+			rightDecision.text = "Go!";
+			rightDecision.nextCard = "";
+			rightDecision.cardsToAdd = new List<string>();
+			startLevelCard.right = rightDecision; 
+
+			return startLevelCard;	
 		}
 
 		CardDefinition StartEvent ()

@@ -23,6 +23,8 @@ namespace core
 		public const string TYPE_EVENT_END = "Event_End";
 		public const string TYPE_END_MASTER = "End_Master";
 		public const string TYPE_LEVEL = "Level";
+		public const string TYPE_EVENT_LEVEL_ANIM = "Level_Anim";
+
 
 		public string id; 
 		public string text;

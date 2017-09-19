@@ -9,6 +9,8 @@ namespace core
 {
 	enum EVENT_STATE
 	{
+		STATE_INIT,
+		STATE_LEVEL,
 		STATE_PRE_EVENT,
 		STATE_EVENT,
 		STATE_POST_EVENT

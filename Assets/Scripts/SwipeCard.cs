@@ -15,6 +15,7 @@ public class SwipeCard : MonoBehaviour
 	public Text CardName;
 	public Texture2D[] startEventTexture = new Texture2D[3];
 	public Texture2D[] endEventTexture = new Texture2D[3];
+	public Texture2D[] levelEventTexture = new Texture2D[1];
 
 #if UNITY_ANDROID || UNITY_IOS
     private CalculateDelta CalculateDelta = new CalculateDeltaTouch();
@@ -65,14 +66,16 @@ public class SwipeCard : MonoBehaviour
         var guy = currentCard.transform.Find("guy");
 
 		if (nextCard.CardType != CardDefinition.TYPE_EVENT_START_ANIM
-			&& nextCard.CardType != CardDefinition.TYPE_EVENT_END_ANIM) {
+			&& nextCard.CardType != CardDefinition.TYPE_EVENT_END_ANIM
+			&& nextCard.CardType != CardDefinition.TYPE_EVENT_LEVEL_ANIM)
+		{
 			var spriteGuy = guy.GetComponent<SpriteRenderer> ();
 			var nextImage = nextCard.Image;
 			spriteGuy.sprite = Sprite.Create (nextImage,
 				new Rect (0, 0, nextImage.width, nextImage.height),
 				new Vector2 (0.5f, 0.5f));
 		} else {
-			animateSprite ();
+			initAnimateSprite ();
 		}
 
         var background = currentCard.transform.Find("background");
@@ -131,18 +134,41 @@ public class SwipeCard : MonoBehaviour
         }
     }
 
+
+	Texture2D[] getListSprites(string cardType) {
+		
+		if (_cardType == CardDefinition.TYPE_EVENT_START_ANIM) {
+			return startEventTexture;
+		} else if (_cardType == CardDefinition.TYPE_EVENT_END_ANIM) {
+			return endEventTexture;
+		} else {
+			return levelEventTexture;
+		}
+	}
+
+	void initAnimateSprite ()
+	{
+		animSprite = 0;
+		var guy = CurrentCard.transform.Find ("guy");
+		var spriteGuy = guy.GetComponent<SpriteRenderer> ();
+		var nextImage = getListSprites (_cardType) [animSprite];
+		spriteGuy.sprite = Sprite.Create (nextImage,
+			new Rect (0, 0, nextImage.width, nextImage.height),
+			new Vector2 (0.5f, 0.5f));
+		_lastSpriteAnimUpdate = 0;
+	}
+
 	void animateSprite ()
 	{
 		if (_cardType == CardDefinition.TYPE_EVENT_START_ANIM 
-			|| _cardType == CardDefinition.TYPE_EVENT_END_ANIM) {
+			|| _cardType == CardDefinition.TYPE_EVENT_END_ANIM
+			|| _cardType == CardDefinition.TYPE_EVENT_LEVEL_ANIM) {
 			if (_lastSpriteAnimUpdate > 0.5f) {
 				var guy = CurrentCard.transform.Find ("guy");
 
 				var spriteGuy = guy.GetComponent<SpriteRenderer> ();
 
-				var nextImage = (_cardType == CardDefinition.TYPE_EVENT_START_ANIM) ?
-					startEventTexture[animSprite] :
-					endEventTexture[animSprite];
+				var nextImage = getListSprites (_cardType) [animSprite];
 
 				spriteGuy.sprite = Sprite.Create (nextImage,
 					new Rect (0, 0, nextImage.width, nextImage.height),
@@ -150,7 +176,7 @@ public class SwipeCard : MonoBehaviour
 				_lastSpriteAnimUpdate = 0;
 
 				animSprite ++;
-				if (animSprite >= startEventTexture.Length) {
+				if (animSprite >= getListSprites(_cardType).Length) {
 					animSprite = 0;
 				}
 
