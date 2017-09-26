@@ -2,7 +2,7 @@
   "gameCards": [
     {
       "id": "1",
-      "text": "Hi! I am Almo . Let's build an awesome GDG local community",
+      "text": "Hi! I am Almo. Let's build an awesome GDG local community",
       "type": "Master",
       "image": "Almo.png",
       "level": "1",
@@ -42,7 +42,7 @@
       "level": "1",
       "isInitial": "FALSE",
       "right": {
-        "text": "write email",
+        "text": "write e-mail",
         "money": "0",
         "happiness": "10",
         "time": "-1",
@@ -56,7 +56,7 @@
         ]
       },
       "left": {
-        "text": "investigate Linkedin",
+        "text": "investigate LinkedIn",
         "money": "0",
         "happiness": "0",
         "time": "-1",
@@ -72,7 +72,7 @@
     },
     {
       "id": "3",
-      "text": "This young promise might be a nice speaker for this occassion",
+      "text": "This young promise might be a nice speaker for this occasion",
       "type": "Speaker",
       "image": "Almo.png",
       "level": "1",
@@ -89,7 +89,7 @@
         ]
       },
       "left": {
-        "text": "decline.Not experienced enough",
+        "text": "Decline. Not experienced enough",
         "money": "0",
         "happiness": "0",
         "time": "-1",
@@ -141,7 +141,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "Will be!",
+        "text": "It will be!",
         "money": "0",
         "happiness": "10",
         "time": "-1",
@@ -181,7 +181,7 @@
       "level": "1",
       "isInitial": "FALSE",
       "right": {
-        "text": "We are all begining",
+        "text": "We are all beginning",
         "money": "0",
         "happiness": "20",
         "time": "-1",
@@ -270,7 +270,7 @@
         ]
       },
       "left": {
-        "text": "No. Send email to superfancy place",
+        "text": "No. Send e-mail to super-fancy place",
         "money": "0",
         "happiness": "10",
         "time": "-1",
@@ -294,7 +294,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "Networking pays foward",
+        "text": "Networking pays forward",
         "money": "0",
         "happiness": "10",
         "time": "-1",
@@ -310,7 +310,7 @@
       "level": "1",
       "isInitial": "FALSE",
       "right": {
-        "text": "Tell eveyone",
+        "text": "Tell everyone",
         "money": "0",
         "happiness": "-10",
         "time": "-1",
@@ -330,7 +330,7 @@
     },
     {
       "id": "13",
-      "text": "The superfancyplace does not anwser email",
+      "text": "The super-fancy place does not reply to your e-mail",
       "type": "Place",
       "image": "Place2.png",
       "level": "1",
@@ -344,7 +344,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "Resend same email",
+        "text": "Resend same e-mail",
         "money": "0",
         "happiness": "-10",
         "time": "-1",
@@ -354,7 +354,7 @@
     },
     {
       "id": "14",
-      "text": "Superfancy place ask about GDG relation to Google",
+      "text": "Super-fancy place ask about GDG relation to Google",
       "type": "Place",
       "image": "Place2.png",
       "level": "1",
@@ -381,7 +381,7 @@
     },
     {
       "id": "15",
-      "text": "Superfancy place tells you that they dont have that day available",
+      "text": "Super-fancy place tells you that they don't have that day available",
       "type": "Place",
       "image": "Place2.png",
       "level": "1",
@@ -405,13 +405,13 @@
     },
     {
       "id": "16",
-      "text": "Superfancy place says next day might be possible",
+      "text": "Super-fancy place says next day might be possible",
       "type": "Place",
       "image": "Place2.png",
       "level": "1",
       "isInitial": "FALSE",
       "right": {
-        "text": "Change eveything",
+        "text": "Change everything",
         "money": "0",
         "happiness": "10",
         "time": "-1",
@@ -421,7 +421,7 @@
         ]
       },
       "left": {
-        "text": "Next time ! Return to other hosts",
+        "text": "Next time! Return to other hosts",
         "money": "0",
         "happiness": "-10",
         "time": "-1",
@@ -431,13 +431,13 @@
     },
     {
       "id": "17",
-      "text": "Event is booked for that day. why change?",
+      "text": "Event is booked for that day. Why change?",
       "type": "Master",
       "image": "Almo.png",
       "level": "1",
       "isInitial": "FALSE",
       "right": {
-        "text": "Superfancy place rocks",
+        "text": "Super-fancy place rocks",
         "money": "0",
         "happiness": "-20",
         "time": "-1",
@@ -447,7 +447,7 @@
         ]
       },
       "left": {
-        "text": "was only a possibility",
+        "text": "It was only a possibility",
         "money": "0",
         "happiness": "-10",
         "time": "0",
@@ -457,7 +457,7 @@
     },
     {
       "id": "18",
-      "text": "This is Fran and I am here to help.Open inscription for assistants",
+      "text": "This is Fran and I am here to help. Open inscription for assistants",
       "type": "Media",
       "image": "Fran.png",
       "level": "1",
@@ -524,7 +524,7 @@
       "level": "1",
       "isInitial": "FALSE",
       "right": {
-        "text": "go  reserach paper go!",
+        "text": "Go research paper go!",
         "money": "0",
         "happiness": "10",
         "time": "-1",
@@ -534,7 +534,7 @@
         ]
       },
       "left": {
-        "text": "example for developers",
+        "text": "Example for developers",
         "money": "0",
         "happiness": "20",
         "time": "-1",
@@ -546,13 +546,13 @@
     },
     {
       "id": "21",
-      "text": "You recieve an out of office email response from Almo",
+      "text": "You receive an out of office e-mail response from Almo",
       "type": "Media",
       "image": "Almo.png",
       "level": "1",
       "isInitial": "FALSE",
       "right": {
-        "text": "push him!",
+        "text": "Push him!",
         "money": "0",
         "happiness": "-10",
         "time": "-1",
@@ -562,7 +562,7 @@
         ]
       },
       "left": {
-        "text": "must be a no",
+        "text": "Must be a no",
         "money": "0",
         "happiness": "-10",
         "time": "-1",
@@ -586,7 +586,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "put a tweet mentioning with event",
+        "text": "Put a tweet mentioning with event",
         "money": "0",
         "happiness": "20",
         "time": "0",
@@ -620,7 +620,7 @@
     },
     {
       "id": "24",
-      "text": "A sucessful GDG community event ...",
+      "text": "A successful GDG community event ...",
       "type": "Master",
       "image": "Fran.png",
       "level": "1",
@@ -636,7 +636,7 @@
         ]
       },
       "left": {
-        "text": "helps organizers find new business",
+        "text": "Helps organizers find new business",
         "money": "0",
         "happiness": "-20",
         "time": "-1",
@@ -726,7 +726,7 @@
         ]
       },
       "left": {
-        "text": "I am so nervious",
+        "text": "I am so nervous",
         "money": "0",
         "happiness": "10",
         "time": "0",
@@ -744,7 +744,7 @@
     },
     {
       "id": "28",
-      "text": "You presented the event , speakers name and techonolgy and tweet hastag",
+      "text": "You presented the event, speakers name and technology and tweet hashtag",
       "type": "Event_Place",
       "image": "FancyPlace.png",
       "level": "1",
@@ -758,7 +758,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "Let\u00b4s go!",
+        "text": "Let's go!",
         "money": "0",
         "happiness": "20",
         "time": "0",
@@ -869,13 +869,13 @@
     },
     {
       "id": "33",
-      "text": "Where is the barthroom?",
+      "text": "Where is the bathroom?",
       "type": "Event_Attendants",
       "image": "Asistant.png",
       "level": "1",
       "isInitial": "FALSE",
       "right": {
-        "text": "I really don\u00b4t know",
+        "text": "I really don't know",
         "money": "0",
         "happiness": "-20",
         "time": "0",
@@ -893,13 +893,13 @@
     },
     {
       "id": "34",
-      "text": "Twitter hastag is on and people is shy with it",
+      "text": "Twitter hashtag is on and people is shy with it",
       "type": "Event_Media",
       "image": "Andreu.png",
       "level": "1",
       "isInitial": "FALSE",
       "right": {
-        "text": "make some more RTs",
+        "text": "Make some more RTs",
         "money": "0",
         "happiness": "10",
         "time": "0",
@@ -907,7 +907,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "use you GDG account to hype it",
+        "text": "Use you GDG account to hype it",
         "money": "0",
         "happiness": "20",
         "time": "0",
@@ -923,7 +923,7 @@
       "level": "1",
       "isInitial": "FALSE",
       "right": {
-        "text": "interrup kindly and aim to approach it later",
+        "text": "Interrupt kindly and aim to approach it later",
         "money": "0",
         "happiness": "-10",
         "time": "0",
@@ -957,7 +957,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "we all make the community",
+        "text": "We all make the community",
         "money": "0",
         "happiness": "20",
         "time": "0",
@@ -1015,7 +1015,7 @@
     },
     {
       "id": "39",
-      "text": "tweet : #GDG This event is great. There are cool developers here",
+      "text": "tweet: #GDG This event is great. There are cool developers here",
       "type": "Event_Speaker",
       "image": "Rockstar.png",
       "level": "1",
@@ -1063,7 +1063,7 @@
     },
     {
       "id": "41",
-      "text": "Food and drinks make people feel confortable and creates atmosphere",
+      "text": "Food and drinks make people feel comfortable and creates atmosphere",
       "type": "Event_Master",
       "image": "Elizier.png",
       "level": "1",
@@ -1077,7 +1077,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "No! one more thing to do as orgaizer",
+        "text": "No! one more thing to do as organizer",
         "money": "0",
         "happiness": "-10",
         "time": "0",
@@ -1149,7 +1149,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "Make As never happended",
+        "text": "Make As never happened",
         "money": "0",
         "happiness": "0",
         "time": "0",
@@ -1161,13 +1161,13 @@
     },
     {
       "id": "43",
-      "text": "The event ended . Yay !",
+      "text": "The event ended. Yay!",
       "type": "Event_End",
       "image": "Event_end.png",
       "level": "1",
       "isInitial": "TRUE",
       "right": {
-        "text": "Nervious but enjoying",
+        "text": "Nervous but enjoying",
         "money": "0",
         "happiness": "10",
         "time": "0",
@@ -1185,7 +1185,7 @@
     },
     {
       "id": "44",
-      "text": "I\u00b4ve heard the event was great for your first time as  a as GDG",
+      "text": "I've heard the event was great for your first time as  a as GDG",
       "type": "End_Master",
       "image": "Almo.png",
       "level": "1",
@@ -1311,7 +1311,7 @@
       "level": "1",
       "isInitial": "FALSE",
       "right": {
-        "text": "More viewpoints increase sucess",
+        "text": "More viewpoints increase success",
         "money": "0",
         "happiness": "0",
         "time": "0",
@@ -1335,7 +1335,7 @@
       "level": "1",
       "isInitial": "FALSE",
       "right": {
-        "text": "Will do, thanks for the recomendation",
+        "text": "Will do, thanks for the recommendation",
         "money": "0",
         "happiness": "0",
         "time": "0",
@@ -1343,7 +1343,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "I do it with my notebook,thanks",
+        "text": "I'll do it with my notebook, thanks",
         "money": "0",
         "happiness": "0",
         "time": "0",
@@ -1377,7 +1377,7 @@
     },
     {
       "id": "52",
-      "text": "TIP :first appreciating similarities, second respecting differencies",
+      "text": "TIP: first appreciating similarities, second respecting differences",
       "type": "End_Master",
       "image": "Fran.png",
       "level": "1",
@@ -1407,7 +1407,7 @@
       "level": "1",
       "isInitial": "TRUE",
       "right": {
-        "text": "educational technical content",
+        "text": "Educational technical content",
         "money": "0",
         "happiness": "100",
         "time": "0",
@@ -1415,7 +1415,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "hear salesy pitch",
+        "text": "Listening to a sales pitch",
         "money": "0",
         "happiness": "0",
         "time": "0",
@@ -1463,7 +1463,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "Will ask for a coorganizer",
+        "text": "Will ask for a co-organizer",
         "money": "0",
         "happiness": "0",
         "time": "0",
@@ -1473,13 +1473,13 @@
     },
     {
       "id": "54",
-      "text": "Now you can go deeper and organize a GDG event more independly",
+      "text": "Now you can go deeper and organize a GDG event more independently",
       "type": "Master",
       "image": "Almo.png",
       "level": "2",
       "isInitial": "TRUE",
       "right": {
-        "text": "Nervious but enjoying",
+        "text": "Nervous but enjoying",
         "money": "0",
         "happiness": "-5",
         "time": "0",
@@ -1597,7 +1597,7 @@
     },
     {
       "id": "59",
-      "text": "I am Paola and as part of the local community, I would love to give a talk !",
+      "text": "I am Paola and as part of the local community, I would love to give a talk!",
       "type": "Speaker",
       "image": "Paola.png",
       "level": "2",
@@ -1693,7 +1693,7 @@
     },
     {
       "id": "63",
-      "text": "Speakers seem to be solved . Send  email reminder",
+      "text": "Speakers seem to be solved. Send e-mail reminder",
       "type": "Master",
       "image": "Fran.png",
       "level": "2",
@@ -1716,7 +1716,7 @@
         ]
       },
       "left": {
-        "text": "email with cool GIF",
+        "text": "E-mail with cool GIF",
         "money": "0",
         "happiness": "10",
         "time": "0",
@@ -1741,7 +1741,7 @@
       "level": "2",
       "isInitial": "FALSE",
       "right": {
-        "text": "Coorganizer rocks .Some help would be awesome",
+        "text": "Co-organizer rocks. Some help would be awesome",
         "money": "0",
         "happiness": "15",
         "time": "1",
@@ -1749,7 +1749,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "No, I am a superorganizer",
+        "text": "No, I am a super-organizer",
         "money": "0",
         "happiness": "-5",
         "time": "0",
@@ -1759,7 +1759,7 @@
     },
     {
       "id": "65",
-      "text": "Events doesn`t need to be big. They need to be great",
+      "text": "Events doesn't need to be big. They need to be great",
       "type": "Master",
       "image": "Elizier.png",
       "level": "2",
@@ -1789,7 +1789,7 @@
       "level": "2",
       "isInitial": "FALSE",
       "right": {
-        "text": "Wow.That`s spiritual",
+        "text": "Wow.That's spiritual",
         "money": "0",
         "happiness": "15",
         "time": "-1",
@@ -1797,7 +1797,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "Philosopy elsewhere, thanks",
+        "text": "Philosophy elsewhere, thanks",
         "money": "0",
         "happiness": "-5",
         "time": "0",
@@ -1807,13 +1807,13 @@
     },
     {
       "id": "67",
-      "text": "You didn't introduce speakers by email to eachother",
+      "text": "You didn't introduce speakers by e-mail to each other",
       "type": "Speaker",
       "image": "Fran.png",
       "level": "2",
       "isInitial": "FALSE",
       "right": {
-        "text": "email them with tech expertise intro",
+        "text": "e-mail them with tech expertise intro",
         "money": "0",
         "happiness": "10",
         "time": "-1",
@@ -1821,7 +1821,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "introduce them the event day",
+        "text": "Introduce them the event day",
         "money": "0",
         "happiness": "-5",
         "time": "0",
@@ -1907,7 +1907,7 @@
     },
     {
       "id": "71",
-      "text": "We can addecuate the place for food and drinks",
+      "text": "We can adequate the place for food and drinks",
       "type": "Place",
       "image": "Place.png",
       "level": "2",
@@ -1921,7 +1921,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "Thanks! can we have a wellcome sign too ?",
+        "text": "Thanks! can we have a welcome sign too ?",
         "money": "0",
         "happiness": "10",
         "time": "0",
@@ -1937,7 +1937,7 @@
       "level": "2",
       "isInitial": "FALSE",
       "right": {
-        "text": "Yes! Promotion explotion",
+        "text": "Yes! Promotion explosion",
         "money": "0",
         "happiness": "10",
         "time": "-1",
@@ -1993,7 +1993,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "Say salesly pitch",
+        "text": "Blurt out a sales pitch",
         "money": "0",
         "happiness": "-10",
         "time": "0",
@@ -2003,7 +2003,7 @@
     },
     {
       "id": "75",
-      "text": "ok. Can we meet in person?",
+      "text": "Ok. Can we meet in person?",
       "type": "Place",
       "image": "Place2.png",
       "level": "2",
@@ -2057,7 +2057,7 @@
     },
     {
       "id": "77",
-      "text": "I need to post a roll up and my logo on your meetup page . Now",
+      "text": "I need to post a roll up and my logo on your meetup page. Now",
       "type": "Media",
       "image": "BadSponsor.png",
       "level": "2",
@@ -2105,13 +2105,13 @@
     },
     {
       "id": "79",
-      "text": "If I give you the money, I need 30 RTs and email from people",
+      "text": "If I give you the money, I need 30 RTs and e-mail from people",
       "type": "Media",
       "image": "BadSponsor.png",
       "level": "2",
       "isInitial": "FALSE",
       "right": {
-        "text": "I think that is ilegal by GDPR standards",
+        "text": "I think that is illegal by GDPR standards",
         "money": "0",
         "happiness": "-10",
         "time": "-1",
@@ -2201,13 +2201,13 @@
     },
     {
       "id": "83",
-      "text": "Twitter is on fire and registrations are exceding your expectations",
+      "text": "Twitter is on fire and registrations are exceeding your expectations",
       "type": "Media",
       "image": "Place.png",
       "level": "2",
       "isInitial": "FALSE",
       "right": {
-        "text": "Breathe and tell venue.Sucess comes with response",
+        "text": "Breathe and tell venue. Success comes with response",
         "money": "0",
         "happiness": "10",
         "time": "-1",
@@ -2225,7 +2225,7 @@
     },
     {
       "id": "84",
-      "text": "You had a strong disagreement with your coorganizer",
+      "text": "You had a strong disagreement with your co-organizer",
       "type": "Master",
       "image": "Ana.png",
       "level": "2",
@@ -2239,7 +2239,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "grab for a coffee and talk",
+        "text": "Invite for a coffee and talk",
         "money": "0",
         "happiness": "20",
         "time": "-1",
@@ -2255,7 +2255,7 @@
       "level": "2",
       "isInitial": "FALSE",
       "right": {
-        "text": "Ask GDG Spain comunication team for help",
+        "text": "Ask GDG Spain communication team for help",
         "money": "0",
         "happiness": "10",
         "time": "0",
@@ -2273,13 +2273,13 @@
     },
     {
       "id": "86",
-      "text": "There's a typo in the meetup page and you dont have time to fix it",
+      "text": "There's a typo in the meetup page and you don't have time to fix it",
       "type": "Media",
       "image": "Alicia.png",
       "level": "2",
       "isInitial": "FALSE",
       "right": {
-        "text": "Ask coorganizer to help you",
+        "text": "Ask co-organizer to help you",
         "money": "0",
         "happiness": "-5",
         "time": "-1",
@@ -2297,7 +2297,7 @@
     },
     {
       "id": "87",
-      "text": "The event starts! Enjoy the journey !",
+      "text": "The event starts! Enjoy the journey!",
       "type": "Event_Start",
       "image": "Almo.png",
       "level": "2",
@@ -2380,7 +2380,7 @@
     },
     {
       "id": "90",
-      "text": "The Speaker's laptop HDMI connection doesn\u00b4t work",
+      "text": "The Speaker's laptop HDMI connection doesn't work",
       "type": "Event_Speaker",
       "image": "Ruben.png",
       "level": "2",
@@ -2418,7 +2418,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "what a disaster!",
+        "text": "What a disaster!",
         "money": "0",
         "happiness": "-10",
         "time": "0",
@@ -2428,13 +2428,13 @@
     },
     {
       "id": "92",
-      "text": "You look sweety and nervious. Keep calm and go on",
+      "text": "You look sweaty and nervous. Keep calm and go on",
       "type": "Event_Place",
       "image": "Vero.png",
       "level": "2",
       "isInitial": "FALSE",
       "right": {
-        "text": "Breathe and go to barthroom",
+        "text": "Breathe and go to bathroom",
         "money": "0",
         "happiness": "-5",
         "time": "-1",
@@ -2452,7 +2452,7 @@
     },
     {
       "id": "93",
-      "text": "Your coorganizer is looking at you weirdly",
+      "text": "Your co-organizer is looking at you weirdly",
       "type": "Event_Place",
       "image": "Abdon2.png",
       "level": "2",
@@ -2466,7 +2466,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "what a disaster!",
+        "text": "What a disaster!",
         "money": "0",
         "happiness": "-10",
         "time": "0",
@@ -2490,7 +2490,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "what a disaster!",
+        "text": "What a disaster!",
         "money": "0",
         "happiness": "-10",
         "time": "0",
@@ -2500,13 +2500,13 @@
     },
     {
       "id": "95",
-      "text": "You are finally breathing. Your coorganizer did a good job",
+      "text": "You are finally breathing. Your co-organizer did a good job",
       "type": "Event_Place",
       "image": "Ruben.png",
       "level": "2",
       "isInitial": "FALSE",
       "right": {
-        "text": "thank your coorganizer",
+        "text": "Thank your co-organizer",
         "money": "0",
         "happiness": "5",
         "time": "0",
@@ -2514,7 +2514,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "think about possible outcomes",
+        "text": "Think about possible outcomes",
         "money": "0",
         "happiness": "-5",
         "time": "0",
@@ -2548,7 +2548,7 @@
     },
     {
       "id": "97",
-      "text": "The sponsor sends a unconfortable mail",
+      "text": "The sponsor sends a uncomfortable mail",
       "type": "Event_Place",
       "image": "BadSponsor.png",
       "level": "2",
@@ -2562,7 +2562,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "respond politely",
+        "text": "Respond politely",
         "money": "0",
         "happiness": "60",
         "time": "0",
@@ -2596,7 +2596,7 @@
     },
     {
       "id": "99",
-      "text": "Overall, people congratulate you and your coorganizer",
+      "text": "Overall, people congratulate you and your co-organizer",
       "type": "Event_Attendants",
       "image": "Abdon2.png",
       "level": "2",
@@ -2634,7 +2634,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "smash the person privately",
+        "text": "Smash the person privately",
         "money": "0",
         "happiness": "0",
         "time": "0",
@@ -2644,7 +2644,7 @@
     },
     {
       "id": "101",
-      "text": "A community key is to searh for win-win situation for everyone",
+      "text": "A community key is to search for win-win situation for everyone",
       "type": "End_Master",
       "image": "Laura.png",
       "level": "2",
@@ -2658,7 +2658,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "Details later, aligator",
+        "text": "Details later, alligator",
         "money": "0",
         "happiness": "0",
         "time": "0",
@@ -2692,7 +2692,7 @@
     },
     {
       "id": "103",
-      "text": "Your coorganizer suggest you to let him/her manage sponsorship",
+      "text": "Your co-organizer suggest you to let him/her manage sponsorship",
       "type": "Event_Place",
       "image": "Alicia.png",
       "level": "2",
@@ -2716,7 +2716,7 @@
     },
     {
       "id": "104",
-      "text": "It\u00b4s time to make something big!",
+      "text": "It's time to make something big!",
       "type": "Master",
       "image": "Almo.png",
       "level": "3",
@@ -2740,7 +2740,7 @@
     },
     {
       "id": "105",
-      "text": "You are definetly a fast learner. It's time to make a devfest happen",
+      "text": "You are definitely a fast learner. It's time to make a DevFest happen",
       "type": "Master",
       "image": "Almo.png",
       "level": "3",
@@ -2764,7 +2764,7 @@
         ]
       },
       "left": {
-        "text": "what is a devfest?",
+        "text": "What is a DevFest?",
         "money": "0",
         "happiness": "0",
         "time": "0",
@@ -2784,13 +2784,13 @@
     },
     {
       "id": "106",
-      "text": "There is a section in GDG wisdom about how to organize a devfest",
+      "text": "There is a section in GDG wisdom about how to organize a DevFest",
       "type": "Master",
       "image": "Fran.png",
       "level": "3",
       "isInitial": "FALSE",
       "right": {
-        "text": "I knew. Share with coorganizer",
+        "text": "I knew. Share with co-organizer",
         "money": "0",
         "happiness": "10",
         "time": "-1",
@@ -2818,7 +2818,7 @@
       "level": "3",
       "isInitial": "FALSE",
       "right": {
-        "text": "Ask community !",
+        "text": "Ask community!",
         "money": "0",
         "happiness": "10",
         "time": "-1",
@@ -2838,13 +2838,13 @@
     },
     {
       "id": "108",
-      "text": "I can have a hangout with you and your coorganizers to help you with devfest",
+      "text": "I can have a hangout with you and your co-organizers to help you with DevFest",
       "type": "Master",
       "image": "Fran.png",
       "level": "3",
       "isInitial": "FALSE",
       "right": {
-        "text": "Ok.prepare the bulletpoints",
+        "text": "Ok. Prepare the bullet points",
         "money": "0",
         "happiness": "5",
         "time": "-1",
@@ -2854,7 +2854,7 @@
         ]
       },
       "left": {
-        "text": "cool! take as many notes as possible",
+        "text": "Cool! take as many notes as possible",
         "money": "0",
         "happiness": "5",
         "time": "-1",
@@ -2864,7 +2864,7 @@
     },
     {
       "id": "109",
-      "text": "There is a tremendous codelab that might be a perfect fit for the devfest",
+      "text": "There is a tremendous codelab that might be a perfect fit for the DevFest",
       "type": "Speaker",
       "image": "Gema.png",
       "level": "3",
@@ -2902,7 +2902,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "start doing what you know",
+        "text": "Start doing what you know",
         "money": "0",
         "happiness": "-5",
         "time": "0",
@@ -2912,13 +2912,13 @@
     },
     {
       "id": "111",
-      "text": "Devfest need sponsorship to correctly function",
+      "text": "DevFest need sponsorship to correctly function",
       "type": "Media",
       "image": "Andreu.png",
       "level": "3",
       "isInitial": "FALSE",
       "right": {
-        "text": "meet with coorganizer for planning",
+        "text": "meet with co-organizer for planning",
         "money": "0",
         "happiness": "5",
         "time": "-1",
@@ -2936,7 +2936,7 @@
         ]
       },
       "left": {
-        "text": "start emailing people",
+        "text": "Start e-mailing people",
         "money": "0",
         "happiness": "-5",
         "time": "0",
@@ -2963,7 +2963,7 @@
       "level": "3",
       "isInitial": "FALSE",
       "right": {
-        "text": "say that you dont have one",
+        "text": "say that you don't have one",
         "money": "0",
         "happiness": "5",
         "time": "-1",
@@ -2971,7 +2971,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "ask for more time and do it",
+        "text": "Ask for more time and do it",
         "money": "0",
         "happiness": "-5",
         "time": "0",
@@ -3005,7 +3005,7 @@
     },
     {
       "id": "114",
-      "text": "You opened a call4papers and you are recieving no applications",
+      "text": "You opened a call4papers and you are receiving no applications",
       "type": "Media",
       "image": "Vanessa.png",
       "level": "3",
@@ -3035,7 +3035,7 @@
       "level": "3",
       "isInitial": "FALSE",
       "right": {
-        "text": "Give tasks inmediatly",
+        "text": "Give tasks immediately",
         "money": "0",
         "happiness": "5",
         "time": "-1",
@@ -3043,7 +3043,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "Grab for coffe and see what can do",
+        "text": "Grab for coffee and see what can do",
         "money": "0",
         "happiness": "10",
         "time": "0",
@@ -3053,7 +3053,7 @@
     },
     {
       "id": "116",
-      "text": "Your coorganizer is convinzed to open assistance registration asap",
+      "text": "Your co-organizer is convinced to open assistance registration asap",
       "type": "Media",
       "image": "Alicia.png",
       "level": "3",
@@ -3077,13 +3077,13 @@
     },
     {
       "id": "117",
-      "text": "We would like to colaborate with you but we have no money",
+      "text": "We would like to collaborate with you but we have no money",
       "type": "Media",
       "image": "Asistant.png",
       "level": "3",
       "isInitial": "FALSE",
       "right": {
-        "text": "You can add promotion effords",
+        "text": "You can add promotion efforts",
         "money": "0",
         "happiness": "10",
         "time": "-1",
@@ -3093,7 +3093,7 @@
         ]
       },
       "left": {
-        "text": "Pospond it untill money is assured",
+        "text": "Postpone it until money is assured",
         "money": "0",
         "happiness": "-5",
         "time": "0",
@@ -3103,7 +3103,7 @@
     },
     {
       "id": "118",
-      "text": "I would like to offer a hackathon with arduino",
+      "text": "I would like to offer a hackathon with Arduino",
       "type": "Speaker",
       "image": "Paola.png",
       "level": "3",
@@ -3129,7 +3129,7 @@
     },
     {
       "id": "119",
-      "text": "Your coorganizer tells you that you could make a spreadsheet to improve organization",
+      "text": "Your co-organizer tells you that you could make a spreadsheet to improve organization",
       "type": "Media",
       "image": "Alicia.png",
       "level": "3",
@@ -3153,7 +3153,7 @@
     },
     {
       "id": "120",
-      "text": "You make an aproximation for devfest budget and its more than expected",
+      "text": "You make an approximation for DevFest budget and its more than expected",
       "type": "Media",
       "image": "Fran.png",
       "level": "3",
@@ -3177,7 +3177,7 @@
     },
     {
       "id": "121",
-      "text": "This seems to be more work than expected' grabs your coorganizer",
+      "text": "This seems to be more work than expected' grabs your co-organizer",
       "type": "Media",
       "image": "Alicia.png",
       "level": "3",
@@ -3191,7 +3191,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "Dont work today and restart",
+        "text": "Don't work today and restart",
         "money": "0",
         "happiness": "5",
         "time": "-1",
@@ -3201,7 +3201,7 @@
     },
     {
       "id": "122",
-      "text": "I am sorry. I can't finally make it to the Devfest",
+      "text": "I am sorry. I can't finally make it to the DevFest",
       "type": "Speaker",
       "image": "Mario Ezquerro.png",
       "level": "3",
@@ -3225,7 +3225,7 @@
     },
     {
       "id": "123",
-      "text": "We dont know exactly how many assistants we will have",
+      "text": "We don't know exactly how many assistants we will have",
       "type": "Media",
       "image": "Alicia.png",
       "level": "3",
@@ -3265,7 +3265,7 @@
         ]
       },
       "left": {
-        "text": "Set up content and ask coorganizer for help",
+        "text": "Set up content and ask co-organizer for help",
         "money": "0",
         "happiness": "10",
         "time": "-1",
@@ -3275,7 +3275,7 @@
     },
     {
       "id": "125",
-      "text": "Almo asks you about advacements but your coorganizer knows more about metrics",
+      "text": "Almo asks you about advancements but your co-organizer knows more about metrics",
       "type": "Master",
       "image": "Almo.png",
       "level": "3",
@@ -3313,7 +3313,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "You\u00b4re kidding me",
+        "text": "You're kidding me",
         "money": "0",
         "happiness": "-5",
         "time": "-1",
@@ -3337,7 +3337,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "I don`t do that",
+        "text": "I don't do that",
         "money": "0",
         "happiness": "-10",
         "time": "-1",
@@ -3409,7 +3409,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "Propose them as coorganizers",
+        "text": "Propose them as co-organizers",
         "money": "0",
         "happiness": "-5",
         "time": "0",
@@ -3467,7 +3467,7 @@
     },
     {
       "id": "138",
-      "text": "There is not enough food for all asistants of the breakfast",
+      "text": "There is not enough food for all breakfast attendees",
       "type": "Event_Attendants",
       "image": "Mario Ezquerro.png",
       "level": "3",
@@ -3491,7 +3491,7 @@
     },
     {
       "id": "139",
-      "text": "One of the devfest assistants start to feel sick",
+      "text": "One of the DevFest assistants start to feel sick",
       "type": "Event_Attendants",
       "image": "Asistant.png",
       "level": "3",
@@ -3563,13 +3563,13 @@
     },
     {
       "id": "142",
-      "text": "People come to congratulate you !",
+      "text": "People come to congratulate you!",
       "type": "Event_Attendants",
       "image": "Asistant.png",
       "level": "3",
       "isInitial": "FALSE",
       "right": {
-        "text": "Yay!Share with coorganizer",
+        "text": "Yay! Share with co-organizer",
         "money": "0",
         "happiness": "10",
         "time": "0",
@@ -3587,13 +3587,13 @@
     },
     {
       "id": "143",
-      "text": "Lights go off",
+      "text": "Lights go out",
       "type": "Event_Attendants",
       "image": "Asistant.png",
       "level": "3",
       "isInitial": "FALSE",
       "right": {
-        "text": "winter is coming",
+        "text": "Winter is coming",
         "money": "0",
         "happiness": "5",
         "time": "0",
@@ -3649,7 +3649,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "gossip about who and why",
+        "text": "Gossip about who and why",
         "money": "0",
         "happiness": "-10",
         "time": "0",
@@ -3659,7 +3659,7 @@
     },
     {
       "id": "146",
-      "text": "The event finished! That was incredible !",
+      "text": "The event finished! That was incredible!",
       "type": "Event_End",
       "image": "",
       "level": "",
@@ -3683,7 +3683,7 @@
     },
     {
       "id": "147",
-      "text": "Try to recycle and seize resources alredy available like GDG wisdom web",
+      "text": "Try to recycle and seize resources already available like GDG wisdom web",
       "type": "End_Master",
       "image": "Almo.png",
       "level": "3",
@@ -3713,7 +3713,7 @@
       "level": "3",
       "isInitial": "FALSE",
       "right": {
-        "text": "Share GDGwisdom on slack channel",
+        "text": "Share GDG wisdom on slack channel",
         "money": "0",
         "happiness": "0",
         "time": "0",
@@ -3731,7 +3731,7 @@
     },
     {
       "id": "149",
-      "text": "You showed leadership when you propose techonolgies you community demands",
+      "text": "You showed leadership when you propose technologies you community demands",
       "type": "End_Master",
       "image": "Almo.png",
       "level": "3",
@@ -3761,7 +3761,7 @@
       "level": "3",
       "isInitial": "FALSE",
       "right": {
-        "text": "Preparation pays foward",
+        "text": "Preparation pays forward",
         "money": "0",
         "happiness": "0",
         "time": "0",
@@ -3779,7 +3779,7 @@
     },
     {
       "id": "151",
-      "text": "You should coordinate better with your coorganizer. It will save you time",
+      "text": "You should coordinate better with your co-organizer. It will save you time",
       "type": "End_Master",
       "image": "Fran.png",
       "level": "3",
@@ -3827,7 +3827,7 @@
     },
     {
       "id": "153",
-      "text": "Serve to grow, Create to fullfil .Congratulations. You have survived",
+      "text": "Serve to grow, Create to fulfill. Congratulations. You have survived",
       "type": "End_Master",
       "image": "Almo.png",
       "level": "3",
@@ -3865,7 +3865,7 @@
         "cardsToAdd": []
       },
       "left": {
-        "text": "I am freaking out alredy",
+        "text": "I am freaking out already",
         "money": "0",
         "happiness": "50",
         "time": "0",
@@ -3875,7 +3875,7 @@
     },
     {
       "id": "155",
-      "text": "Remember to be humble and happy. Give first . Keep learning",
+      "text": "Remember to be humble and happy. Give first. Keep learning",
       "type": "End_Master",
       "image": "Almo.png",
       "level": "3",
