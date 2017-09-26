@@ -823,7 +823,7 @@
       "id": "31",
       "text": "Flipper's talk took a lot of time. I fell sleep",
       "type": "Event_Attendants",
-      "image": "Asistant.png",
+      "image": "Assistant.png",
       "level": "1",
       "isInitial": "FALSE",
       "right": {
@@ -871,7 +871,7 @@
       "id": "33",
       "text": "Where is the bathroom?",
       "type": "Event_Attendants",
-      "image": "Asistant.png",
+      "image": "Assistant.png",
       "level": "1",
       "isInitial": "FALSE",
       "right": {
@@ -945,7 +945,7 @@
       "id": "36",
       "text": "Thank you for making this event possible. You are doing great",
       "type": "Event_Speaker",
-      "image": "Asistant.png",
+      "image": "Assistant.png",
       "level": "1",
       "isInitial": "FALSE",
       "right": {
@@ -1065,7 +1065,7 @@
       "id": "41",
       "text": "Food and drinks make people feel comfortable and creates atmosphere",
       "type": "Event_Master",
-      "image": "Elizier.png",
+      "image": "Eliezer.png",
       "level": "1",
       "isInitial": "FALSE",
       "right": {
@@ -1113,7 +1113,7 @@
       "id": "128",
       "text": "People say that the place is nice",
       "type": "Event_Attendants",
-      "image": "Asistant.png",
+      "image": "Assistant.png",
       "level": "1",
       "isInitial": "FALSE",
       "right": {
@@ -1137,7 +1137,7 @@
       "id": "126",
       "text": "A lot of people is angry because the event start with delay.",
       "type": "Event_Media",
-      "image": "Asistant.png",
+      "image": "Assistant.png",
       "level": "1",
       "isInitial": "FALSE",
       "right": {
@@ -1575,7 +1575,7 @@
       "id": "58",
       "text": "Give a voice to local talent is important for the community to grow",
       "type": "Speaker",
-      "image": "Elizier.png",
+      "image": "Eliezer.png",
       "level": "2",
       "isInitial": "FALSE",
       "right": {
@@ -1761,7 +1761,7 @@
       "id": "65",
       "text": "Events doesn't need to be big. They need to be great",
       "type": "Master",
-      "image": "Elizier.png",
+      "image": "Eliezer.png",
       "level": "2",
       "isInitial": "FALSE",
       "right": {
@@ -3079,7 +3079,7 @@
       "id": "117",
       "text": "We would like to collaborate with you but we have no money",
       "type": "Media",
-      "image": "Asistant.png",
+      "image": "Assistant.png",
       "level": "3",
       "isInitial": "FALSE",
       "right": {
@@ -3421,7 +3421,7 @@
       "id": "136",
       "text": "The hackathon with Arduino is going awesome!",
       "type": "Event_Speaker",
-      "image": "Asistant.png",
+      "image": "Assistant.png",
       "level": "3",
       "isInitial": "FALSE",
       "right": {
@@ -3493,7 +3493,7 @@
       "id": "139",
       "text": "One of the DevFest assistants start to feel sick",
       "type": "Event_Attendants",
-      "image": "Asistant.png",
+      "image": "Assistant.png",
       "level": "3",
       "isInitial": "FALSE",
       "right": {
@@ -3565,7 +3565,7 @@
       "id": "142",
       "text": "People come to congratulate you!",
       "type": "Event_Attendants",
-      "image": "Asistant.png",
+      "image": "Assistant.png",
       "level": "3",
       "isInitial": "FALSE",
       "right": {
@@ -3589,7 +3589,7 @@
       "id": "143",
       "text": "Lights go out",
       "type": "Event_Attendants",
-      "image": "Asistant.png",
+      "image": "Assistant.png",
       "level": "3",
       "isInitial": "FALSE",
       "right": {
