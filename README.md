@@ -1,6 +1,11 @@
 # GDG Game - DevSquare
 
 [![Waffle.io - Issues in progress](https://badge.waffle.io/Bigotter/gdggame.png?label=in%20progress&title=In%20Progress)](https://waffle.io/Bigotter/gdggame?utm_source=badge)
+[![GitHub issues](https://img.shields.io/github/issues/Bigotter/gdggame.svg)](https://github.com/Bigotter/gdggame/issues)
+[![GitHub forks](https://img.shields.io/github/forks/Bigotter/gdggame.svg)](https://github.com/Bigotter/gdggame/network)
+[![GitHub stars](https://img.shields.io/github/stars/Bigotter/gdggame.svg)](https://github.com/Bigotter/gdggame/stargazers)
+[![GitHub license](https://img.shields.io/github/license/Bigotter/gdggame.svg)](https://github.com/Bigotter/gdggame/blob/master/LICENSE)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/Bigotter/gdggame.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FBigotter%2Fgdggame)
 
 ![Dev Square](logo.webp)
 
